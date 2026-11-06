@@ -1,0 +1,18 @@
+.lesson-layout{display:grid;grid-template-columns:1fr 300px;gap:1rem}
+.lesson-section{margin-bottom:1rem}
+.lesson-section h3{color:var(--accent)}
+.term-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem}
+.term{padding:.6rem;border:1px solid var(--border);border-radius:10px;background:#0d1a2b}
+.term .en{direction:ltr;display:inline-block;color:#a5f3fc;font-weight:700}
+.command-card{border:1px solid var(--border);border-radius:12px;background:#0d1a2b;padding:1rem;margin-bottom:.8rem}
+.command-card .cmd{direction:ltr;text-align:left;background:#0a1526;border:1px solid var(--border);padding:.5rem .7rem;border-radius:8px;color:#a5f3fc;font-family:Consolas,monospace;display:block;margin-bottom:.6rem}
+.command-card dl{display:grid;grid-template-columns:140px 1fr;gap:.3rem .7rem;margin:0}
+.command-card dt{color:var(--muted);font-weight:600}
+.command-card dd{margin:0}
+.question{border:1px solid var(--border);border-radius:12px;padding:1rem;margin-bottom:.8rem;background:#0d1a2b}
+.question .q-title{font-weight:700;margin-bottom:.6rem}
+.feedback{margin-top:.6rem;padding:.6rem;border-radius:8px;border:1px solid var(--border)}
+.feedback.correct{border-color:#14532d;color:#bbf7d0}.feedback.incorrect{border-color:#7f1d1d;color:#fecaca}
+.lesson-side .card{position:sticky;top:80px}
+.objectives{padding-right:1.2rem}
+.objectives li{margin-bottom:.3rem}

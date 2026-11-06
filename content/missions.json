@@ -1,0 +1,3017 @@
+[
+  {
+    "id": "mis01",
+    "order": 1,
+    "identifier": "CL-2026-001",
+    "title": "بوابة المدرسة",
+    "chapter_id": "ch01",
+    "priority": "high",
+    "company_background": "شركة CYBER LIFE الافتراضية تقدم تدريباً دفاعياً لفرق صغيرة. أنت العضو الرابع في فريقك.",
+    "incident_description": "تنبيه محاولات دخول متكررة لحساب تدريبي",
+    "scope_authorization": "التحقيق مصرح به على الأدلة الاصطناعية المعروضة فقط. لا تفحص أنظمة حقيقية.",
+    "evidence": [
+      {
+        "id": "mis01_ev1",
+        "type": "log",
+        "title": "سجل اصطناعي أساسي",
+        "required": true,
+        "status": "confirmed",
+        "content": "2026-01-10T08:00:01Z auth failed user=student01 ip=10.10.20.9\n2026-01-10T08:00:04Z auth failed user=student01 ip=10.10.20.9\n2026-01-10T08:00:09Z auth failed user=student01 ip=10.10.20.9\n2026-01-10T08:02:00Z auth success user=student01 ip=10.10.20.4"
+      },
+      {
+        "id": "mis01_ev2",
+        "type": "note",
+        "title": "ملاحظة نطاق وتفويض",
+        "required": true,
+        "status": "confirmed",
+        "content": "كل البيانات اصطناعية. الفحص مصرح به داخل بيئة CYBER LIFE التدريبية فقط."
+      }
+    ],
+    "teammate_comments": [
+      {
+        "teammate_id": "tm_researcher",
+        "topic": "initial",
+        "status": "hypothesis",
+        "text": "أقترح أن السبب مرتبط بـتنبيه محاولات دخول متكررة لحساب تدريبي. هذه فرضية تحتاج دليلاً إضافياً.",
+        "evidence_ids": [
+          "mis01_ev1"
+        ]
+      },
+      {
+        "teammate_id": "tm_log_analyst",
+        "topic": "timeline",
+        "status": "confirmed_evidence",
+        "text": "الأحداث المعروضة مرتبة زمنياً في السجل الاصطناعي؛ يجب توحيدها إلى UTC قبل الدمج.",
+        "evidence_ids": [
+          "mis01_ev1"
+        ]
+      },
+      {
+        "teammate_id": "tm_risk_docs",
+        "topic": "report",
+        "status": "opinion",
+        "text": "أرى أن التقرير يجب أن يذكر الأثر والحدود وإجراءً بمالك وزمن. هذا رأي تنظيمي وليس دليلاً تقنياً.",
+        "evidence_ids": [
+          "mis01_ev2"
+        ]
+      },
+      {
+        "teammate_id": "tm_researcher",
+        "topic": "alternative",
+        "status": "unverified_assumption",
+        "text": "قد يكون النشاط ضاراً لأن العنوان خارجي. هذا افتراض غير مؤكد؛ الخارجية وحدها لا تكفي.",
+        "evidence_ids": [
+          "mis01_ev1"
+        ]
+      }
+    ],
+    "investigation_questions": [
+      {
+        "id": "mis01_q1",
+        "prompt": "ما التصنيف الأولي الأدق؟",
+        "options": [
+          {
+            "id": "a",
+            "text": "اختراق مؤكد"
+          },
+          {
+            "id": "b",
+            "text": "نمط يستحق التحقق"
+          },
+          {
+            "id": "c",
+            "text": "لا يوجد نمط"
+          }
+        ],
+        "explanation": "الإجابة الصحيحة تعتمد على الدليل والسياق وليس الانطباع السريع."
+      },
+      {
+        "id": "mis01_q2",
+        "prompt": "ما الخطوة التالية؟",
+        "options": [
+          {
+            "id": "a",
+            "text": "حذف السجل"
+          },
+          {
+            "id": "b",
+            "text": "مراجعة هوية المستخدم وسجل النجاح"
+          },
+          {
+            "id": "c",
+            "text": "تعطيل كل الحسابات"
+          }
+        ],
+        "explanation": "الإجابة الصحيحة تعتمد على الدليل والسياق وليس الانطباع السريع."
+      }
+    ],
+    "answer_key": {
+      "decisions": {
+        "mis01_q1": "b",
+        "mis01_q2": "b"
+      }
+    },
+    "evaluation": {
+      "passing_score": 70,
+      "findings_rubric": [
+        {
+          "id": "c1",
+          "label": "ذكر محاولات",
+          "weight": 1,
+          "any_of": [
+            [
+              "محاولات"
+            ]
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ذكر فشل",
+          "weight": 1,
+          "any_of": [
+            [
+              "فشل"
+            ]
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "ذكر نجاح",
+          "weight": 1,
+          "any_of": [
+            [
+              "نجاح"
+            ]
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "ذكر تحقق",
+          "weight": 1,
+          "any_of": [
+            [
+              "تحقق"
+            ]
+          ]
+        }
+      ],
+      "report_rubric": [
+        {
+          "id": "c1",
+          "label": "ذكر محاولات",
+          "weight": 1,
+          "any_of": [
+            [
+              "محاولات"
+            ]
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ذكر فشل",
+          "weight": 1,
+          "any_of": [
+            [
+              "فشل"
+            ]
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "ذكر نجاح",
+          "weight": 1,
+          "any_of": [
+            [
+              "نجاح"
+            ]
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "ذكر تحقق",
+          "weight": 1,
+          "any_of": [
+            [
+              "تحقق"
+            ]
+          ]
+        }
+      ]
+    },
+    "published": true
+  },
+  {
+    "id": "mis02",
+    "order": 2,
+    "identifier": "CL-2026-002",
+    "title": "خدمة غير متوقعة",
+    "chapter_id": "ch02",
+    "priority": "high",
+    "company_background": "شركة CYBER LIFE الافتراضية تقدم تدريباً دفاعياً لفرق صغيرة. أنت العضو الرابع في فريقك.",
+    "incident_description": "خدمة تبدأ من مسار مؤقت وتتصل خارجياً",
+    "scope_authorization": "التحقيق مصرح به على الأدلة الاصطناعية المعروضة فقط. لا تفحص أنظمة حقيقية.",
+    "evidence": [
+      {
+        "id": "mis02_ev1",
+        "type": "log",
+        "title": "سجل اصطناعي أساسي",
+        "required": true,
+        "status": "confirmed",
+        "content": "service started name=update path=/tmp/.cache/update pid=412\nnetwork connect pid=412 dst=10.10.30.7:443\nfile modified path=/tmp/.cache/update mtime=08:10"
+      },
+      {
+        "id": "mis02_ev2",
+        "type": "note",
+        "title": "ملاحظة نطاق وتفويض",
+        "required": true,
+        "status": "confirmed",
+        "content": "كل البيانات اصطناعية. الفحص مصرح به داخل بيئة CYBER LIFE التدريبية فقط."
+      }
+    ],
+    "teammate_comments": [
+      {
+        "teammate_id": "tm_researcher",
+        "topic": "initial",
+        "status": "hypothesis",
+        "text": "أقترح أن السبب مرتبط بـخدمة تبدأ من مسار مؤقت وتتصل خارجياً. هذه فرضية تحتاج دليلاً إضافياً.",
+        "evidence_ids": [
+          "mis02_ev1"
+        ]
+      },
+      {
+        "teammate_id": "tm_log_analyst",
+        "topic": "timeline",
+        "status": "confirmed_evidence",
+        "text": "الأحداث المعروضة مرتبة زمنياً في السجل الاصطناعي؛ يجب توحيدها إلى UTC قبل الدمج.",
+        "evidence_ids": [
+          "mis02_ev1"
+        ]
+      },
+      {
+        "teammate_id": "tm_risk_docs",
+        "topic": "report",
+        "status": "opinion",
+        "text": "أرى أن التقرير يجب أن يذكر الأثر والحدود وإجراءً بمالك وزمن. هذا رأي تنظيمي وليس دليلاً تقنياً.",
+        "evidence_ids": [
+          "mis02_ev2"
+        ]
+      },
+      {
+        "teammate_id": "tm_researcher",
+        "topic": "alternative",
+        "status": "unverified_assumption",
+        "text": "قد يكون النشاط ضاراً لأن العنوان خارجي. هذا افتراض غير مؤكد؛ الخارجية وحدها لا تكفي.",
+        "evidence_ids": [
+          "mis02_ev1"
+        ]
+      }
+    ],
+    "investigation_questions": [
+      {
+        "id": "mis02_q1",
+        "prompt": "ما الدليل الأقوى للربط؟",
+        "options": [
+          {
+            "id": "a",
+            "text": "اسم update"
+          },
+          {
+            "id": "b",
+            "text": "pid والمسار والاتصال"
+          },
+          {
+            "id": "c",
+            "text": "لون الملف"
+          }
+        ],
+        "explanation": "الإجابة الصحيحة تعتمد على الدليل والسياق وليس الانطباع السريع."
+      },
+      {
+        "id": "mis02_q2",
+        "prompt": "ما الإجراء الأول؟",
+        "options": [
+          {
+            "id": "a",
+            "text": "حذف /tmp كله"
+          },
+          {
+            "id": "b",
+            "text": "جمع معلومات الخدمة ضمن التفويض"
+          },
+          {
+            "id": "c",
+            "text": "إطفاء كل الخوادم"
+          }
+        ],
+        "explanation": "الإجابة الصحيحة تعتمد على الدليل والسياق وليس الانطباع السريع."
+      }
+    ],
+    "answer_key": {
+      "decisions": {
+        "mis02_q1": "b",
+        "mis02_q2": "b"
+      }
+    },
+    "evaluation": {
+      "passing_score": 70,
+      "findings_rubric": [
+        {
+          "id": "c1",
+          "label": "ذكر خدمة",
+          "weight": 1,
+          "any_of": [
+            [
+              "خدمة"
+            ]
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ذكر مسار",
+          "weight": 1,
+          "any_of": [
+            [
+              "مسار"
+            ]
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "ذكر pid",
+          "weight": 1,
+          "any_of": [
+            [
+              "pid"
+            ]
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "ذكر اتصال",
+          "weight": 1,
+          "any_of": [
+            [
+              "اتصال"
+            ]
+          ]
+        }
+      ],
+      "report_rubric": [
+        {
+          "id": "c1",
+          "label": "ذكر خدمة",
+          "weight": 1,
+          "any_of": [
+            [
+              "خدمة"
+            ]
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ذكر مسار",
+          "weight": 1,
+          "any_of": [
+            [
+              "مسار"
+            ]
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "ذكر pid",
+          "weight": 1,
+          "any_of": [
+            [
+              "pid"
+            ]
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "ذكر اتصال",
+          "weight": 1,
+          "any_of": [
+            [
+              "اتصال"
+            ]
+          ]
+        }
+      ]
+    },
+    "published": true
+  },
+  {
+    "id": "mis03",
+    "order": 3,
+    "identifier": "CL-2026-003",
+    "title": "اتصالات دورية",
+    "chapter_id": "ch03",
+    "priority": "medium",
+    "company_background": "شركة CYBER LIFE الافتراضية تقدم تدريباً دفاعياً لفرق صغيرة. أنت العضو الرابع في فريقك.",
+    "incident_description": "جهاز يتصل كل 60 ثانية بعنوان خارجي",
+    "scope_authorization": "التحقيق مصرح به على الأدلة الاصطناعية المعروضة فقط. لا تفحص أنظمة حقيقية.",
+    "evidence": [
+      {
+        "id": "mis03_ev1",
+        "type": "log",
+        "title": "سجل اصطناعي أساسي",
+        "required": true,
+        "status": "confirmed",
+        "content": "flow src=10.10.20.15 dst=10.10.30.7 dport=443 interval=60s\nflow src=10.10.20.15 dst=10.10.30.7 dport=443 interval=60s\ndns query name=updates.training.local"
+      },
+      {
+        "id": "mis03_ev2",
+        "type": "note",
+        "title": "ملاحظة نطاق وتفويض",
+        "required": true,
+        "status": "confirmed",
+        "content": "كل البيانات اصطناعية. الفحص مصرح به داخل بيئة CYBER LIFE التدريبية فقط."
+      }
+    ],
+    "teammate_comments": [
+      {
+        "teammate_id": "tm_researcher",
+        "topic": "initial",
+        "status": "hypothesis",
+        "text": "أقترح أن السبب مرتبط بـجهاز يتصل كل 60 ثانية بعنوان خارجي. هذه فرضية تحتاج دليلاً إضافياً.",
+        "evidence_ids": [
+          "mis03_ev1"
+        ]
+      },
+      {
+        "teammate_id": "tm_log_analyst",
+        "topic": "timeline",
+        "status": "confirmed_evidence",
+        "text": "الأحداث المعروضة مرتبة زمنياً في السجل الاصطناعي؛ يجب توحيدها إلى UTC قبل الدمج.",
+        "evidence_ids": [
+          "mis03_ev1"
+        ]
+      },
+      {
+        "teammate_id": "tm_risk_docs",
+        "topic": "report",
+        "status": "opinion",
+        "text": "أرى أن التقرير يجب أن يذكر الأثر والحدود وإجراءً بمالك وزمن. هذا رأي تنظيمي وليس دليلاً تقنياً.",
+        "evidence_ids": [
+          "mis03_ev2"
+        ]
+      },
+      {
+        "teammate_id": "tm_researcher",
+        "topic": "alternative",
+        "status": "unverified_assumption",
+        "text": "قد يكون النشاط ضاراً لأن العنوان خارجي. هذا افتراض غير مؤكد؛ الخارجية وحدها لا تكفي.",
+        "evidence_ids": [
+          "mis03_ev1"
+        ]
+      }
+    ],
+    "investigation_questions": [
+      {
+        "id": "mis03_q1",
+        "prompt": "ما الذي ينقص للحكم؟",
+        "options": [
+          {
+            "id": "a",
+            "text": "لون الجهاز"
+          },
+          {
+            "id": "b",
+            "text": "تفويض الخدمة والعملية المالكة"
+          },
+          {
+            "id": "c",
+            "text": "حجم الشاشة"
+          }
+        ],
+        "explanation": "الإجابة الصحيحة تعتمد على الدليل والسياق وليس الانطباع السريع."
+      },
+      {
+        "id": "mis03_q2",
+        "prompt": "ما الوصف المهني؟",
+        "options": [
+          {
+            "id": "a",
+            "text": "اختراق مؤكد"
+          },
+          {
+            "id": "b",
+            "text": "نمط دوري يستحق التحقق"
+          },
+          {
+            "id": "c",
+            "text": "طبيعي دائماً"
+          }
+        ],
+        "explanation": "الإجابة الصحيحة تعتمد على الدليل والسياق وليس الانطباع السريع."
+      }
+    ],
+    "answer_key": {
+      "decisions": {
+        "mis03_q1": "b",
+        "mis03_q2": "b"
+      }
+    },
+    "evaluation": {
+      "passing_score": 70,
+      "findings_rubric": [
+        {
+          "id": "c1",
+          "label": "ذكر دوري",
+          "weight": 1,
+          "any_of": [
+            [
+              "دوري"
+            ]
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ذكر اتصال",
+          "weight": 1,
+          "any_of": [
+            [
+              "اتصال"
+            ]
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "ذكر تفويض",
+          "weight": 1,
+          "any_of": [
+            [
+              "تفويض"
+            ]
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "ذكر عملية",
+          "weight": 1,
+          "any_of": [
+            [
+              "عملية"
+            ]
+          ]
+        }
+      ],
+      "report_rubric": [
+        {
+          "id": "c1",
+          "label": "ذكر دوري",
+          "weight": 1,
+          "any_of": [
+            [
+              "دوري"
+            ]
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ذكر اتصال",
+          "weight": 1,
+          "any_of": [
+            [
+              "اتصال"
+            ]
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "ذكر تفويض",
+          "weight": 1,
+          "any_of": [
+            [
+              "تفويض"
+            ]
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "ذكر عملية",
+          "weight": 1,
+          "any_of": [
+            [
+              "عملية"
+            ]
+          ]
+        }
+      ]
+    },
+    "published": true
+  },
+  {
+    "id": "mis04",
+    "order": 4,
+    "identifier": "CL-2026-004",
+    "title": "سجل دخول لينكس",
+    "chapter_id": "ch04",
+    "priority": "medium",
+    "company_background": "شركة CYBER LIFE الافتراضية تقدم تدريباً دفاعياً لفرق صغيرة. أنت العضو الرابع في فريقك.",
+    "incident_description": "محاولات فاشلة في auth.log اصطناعي",
+    "scope_authorization": "التحقيق مصرح به على الأدلة الاصطناعية المعروضة فقط. لا تفحص أنظمة حقيقية.",
+    "evidence": [
+      {
+        "id": "mis04_ev1",
+        "type": "log",
+        "title": "سجل اصطناعي أساسي",
+        "required": true,
+        "status": "confirmed",
+        "content": "Failed password for student01 from 10.10.20.9 port 51234\nFailed password for student01 from 10.10.20.9 port 51235\nAccepted password for student01 from 10.10.20.4 port 51240"
+      },
+      {
+        "id": "mis04_ev2",
+        "type": "note",
+        "title": "ملاحظة نطاق وتفويض",
+        "required": true,
+        "status": "confirmed",
+        "content": "كل البيانات اصطناعية. الفحص مصرح به داخل بيئة CYBER LIFE التدريبية فقط."
+      }
+    ],
+    "teammate_comments": [
+      {
+        "teammate_id": "tm_researcher",
+        "topic": "initial",
+        "status": "hypothesis",
+        "text": "أقترح أن السبب مرتبط بـمحاولات فاشلة في auth.log اصطناعي. هذه فرضية تحتاج دليلاً إضافياً.",
+        "evidence_ids": [
+          "mis04_ev1"
+        ]
+      },
+      {
+        "teammate_id": "tm_log_analyst",
+        "topic": "timeline",
+        "status": "confirmed_evidence",
+        "text": "الأحداث المعروضة مرتبة زمنياً في السجل الاصطناعي؛ يجب توحيدها إلى UTC قبل الدمج.",
+        "evidence_ids": [
+          "mis04_ev1"
+        ]
+      },
+      {
+        "teammate_id": "tm_risk_docs",
+        "topic": "report",
+        "status": "opinion",
+        "text": "أرى أن التقرير يجب أن يذكر الأثر والحدود وإجراءً بمالك وزمن. هذا رأي تنظيمي وليس دليلاً تقنياً.",
+        "evidence_ids": [
+          "mis04_ev2"
+        ]
+      },
+      {
+        "teammate_id": "tm_researcher",
+        "topic": "alternative",
+        "status": "unverified_assumption",
+        "text": "قد يكون النشاط ضاراً لأن العنوان خارجي. هذا افتراض غير مؤكد؛ الخارجية وحدها لا تكفي.",
+        "evidence_ids": [
+          "mis04_ev1"
+        ]
+      }
+    ],
+    "investigation_questions": [
+      {
+        "id": "mis04_q1",
+        "prompt": "أي أمر يرشح الفشل؟",
+        "options": [
+          {
+            "id": "a",
+            "text": "grep Failed auth.log"
+          },
+          {
+            "id": "b",
+            "text": "pwd"
+          },
+          {
+            "id": "c",
+            "text": "cd"
+          }
+        ],
+        "explanation": "الإجابة الصحيحة تعتمد على الدليل والسياق وليس الانطباع السريع."
+      },
+      {
+        "id": "mis04_q2",
+        "prompt": "ما الذي يثبته العد وحده؟",
+        "options": [
+          {
+            "id": "a",
+            "text": "اختراق"
+          },
+          {
+            "id": "b",
+            "text": "عدد أسطر مطابقة"
+          },
+          {
+            "id": "c",
+            "text": "هوية المهاجم"
+          }
+        ],
+        "explanation": "الإجابة الصحيحة تعتمد على الدليل والسياق وليس الانطباع السريع."
+      }
+    ],
+    "answer_key": {
+      "decisions": {
+        "mis04_q1": "a",
+        "mis04_q2": "b"
+      }
+    },
+    "evaluation": {
+      "passing_score": 70,
+      "findings_rubric": [
+        {
+          "id": "c1",
+          "label": "ذكر grep",
+          "weight": 1,
+          "any_of": [
+            [
+              "grep"
+            ]
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ذكر سجل",
+          "weight": 1,
+          "any_of": [
+            [
+              "سجل"
+            ]
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "ذكر فشل",
+          "weight": 1,
+          "any_of": [
+            [
+              "فشل"
+            ]
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "ذكر عد",
+          "weight": 1,
+          "any_of": [
+            [
+              "عد"
+            ]
+          ]
+        }
+      ],
+      "report_rubric": [
+        {
+          "id": "c1",
+          "label": "ذكر grep",
+          "weight": 1,
+          "any_of": [
+            [
+              "grep"
+            ]
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ذكر سجل",
+          "weight": 1,
+          "any_of": [
+            [
+              "سجل"
+            ]
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "ذكر فشل",
+          "weight": 1,
+          "any_of": [
+            [
+              "فشل"
+            ]
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "ذكر عد",
+          "weight": 1,
+          "any_of": [
+            [
+              "عد"
+            ]
+          ]
+        }
+      ]
+    },
+    "published": true
+  },
+  {
+    "id": "mis05",
+    "order": 5,
+    "identifier": "CL-2026-005",
+    "title": "ملخص محاولات",
+    "chapter_id": "ch05",
+    "priority": "low",
+    "company_background": "شركة CYBER LIFE الافتراضية تقدم تدريباً دفاعياً لفرق صغيرة. أنت العضو الرابع في فريقك.",
+    "incident_description": "سكربت دفاعي يلخص الفشل حسب العنوان",
+    "scope_authorization": "التحقيق مصرح به على الأدلة الاصطناعية المعروضة فقط. لا تفحص أنظمة حقيقية.",
+    "evidence": [
+      {
+        "id": "mis05_ev1",
+        "type": "log",
+        "title": "سجل اصطناعي أساسي",
+        "required": true,
+        "status": "confirmed",
+        "content": "10.10.20.9 failed 12\n10.10.20.4 failed 1\n10.10.20.9 success 1"
+      },
+      {
+        "id": "mis05_ev2",
+        "type": "note",
+        "title": "ملاحظة نطاق وتفويض",
+        "required": true,
+        "status": "confirmed",
+        "content": "كل البيانات اصطناعية. الفحص مصرح به داخل بيئة CYBER LIFE التدريبية فقط."
+      }
+    ],
+    "teammate_comments": [
+      {
+        "teammate_id": "tm_researcher",
+        "topic": "initial",
+        "status": "hypothesis",
+        "text": "أقترح أن السبب مرتبط بـسكربت دفاعي يلخص الفشل حسب العنوان. هذه فرضية تحتاج دليلاً إضافياً.",
+        "evidence_ids": [
+          "mis05_ev1"
+        ]
+      },
+      {
+        "teammate_id": "tm_log_analyst",
+        "topic": "timeline",
+        "status": "confirmed_evidence",
+        "text": "الأحداث المعروضة مرتبة زمنياً في السجل الاصطناعي؛ يجب توحيدها إلى UTC قبل الدمج.",
+        "evidence_ids": [
+          "mis05_ev1"
+        ]
+      },
+      {
+        "teammate_id": "tm_risk_docs",
+        "topic": "report",
+        "status": "opinion",
+        "text": "أرى أن التقرير يجب أن يذكر الأثر والحدود وإجراءً بمالك وزمن. هذا رأي تنظيمي وليس دليلاً تقنياً.",
+        "evidence_ids": [
+          "mis05_ev2"
+        ]
+      },
+      {
+        "teammate_id": "tm_researcher",
+        "topic": "alternative",
+        "status": "unverified_assumption",
+        "text": "قد يكون النشاط ضاراً لأن العنوان خارجي. هذا افتراض غير مؤكد؛ الخارجية وحدها لا تكفي.",
+        "evidence_ids": [
+          "mis05_ev1"
+        ]
+      }
+    ],
+    "investigation_questions": [
+      {
+        "id": "mis05_q1",
+        "prompt": "ما البنية المناسبة للتجميع؟",
+        "options": [
+          {
+            "id": "a",
+            "text": "dict"
+          },
+          {
+            "id": "b",
+            "text": "صورة"
+          },
+          {
+            "id": "c",
+            "text": "منفذ"
+          }
+        ],
+        "explanation": "الإجابة الصحيحة تعتمد على الدليل والسياق وليس الانطباع السريع."
+      },
+      {
+        "id": "mis05_q2",
+        "prompt": "ما الحد المهم؟",
+        "options": [
+          {
+            "id": "a",
+            "text": "العد يثبت الاختراق"
+          },
+          {
+            "id": "b",
+            "text": "العد لا يميز كل السياقات"
+          },
+          {
+            "id": "c",
+            "text": "لا حاجة لمصدر"
+          }
+        ],
+        "explanation": "الإجابة الصحيحة تعتمد على الدليل والسياق وليس الانطباع السريع."
+      }
+    ],
+    "answer_key": {
+      "decisions": {
+        "mis05_q1": "a",
+        "mis05_q2": "b"
+      }
+    },
+    "evaluation": {
+      "passing_score": 70,
+      "findings_rubric": [
+        {
+          "id": "c1",
+          "label": "ذكر تجميع",
+          "weight": 1,
+          "any_of": [
+            [
+              "تجميع"
+            ]
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ذكر عنوان",
+          "weight": 1,
+          "any_of": [
+            [
+              "عنوان"
+            ]
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "ذكر حدود",
+          "weight": 1,
+          "any_of": [
+            [
+              "حدود"
+            ]
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "ذكر مصدر",
+          "weight": 1,
+          "any_of": [
+            [
+              "مصدر"
+            ]
+          ]
+        }
+      ],
+      "report_rubric": [
+        {
+          "id": "c1",
+          "label": "ذكر تجميع",
+          "weight": 1,
+          "any_of": [
+            [
+              "تجميع"
+            ]
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ذكر عنوان",
+          "weight": 1,
+          "any_of": [
+            [
+              "عنوان"
+            ]
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "ذكر حدود",
+          "weight": 1,
+          "any_of": [
+            [
+              "حدود"
+            ]
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "ذكر مصدر",
+          "weight": 1,
+          "any_of": [
+            [
+              "مصدر"
+            ]
+          ]
+        }
+      ]
+    },
+    "published": true
+  },
+  {
+    "id": "mis06",
+    "order": 6,
+    "identifier": "CL-2026-006",
+    "title": "طلبات ويب مشبوهة",
+    "chapter_id": "ch06",
+    "priority": "medium",
+    "company_background": "شركة CYBER LIFE الافتراضية تقدم تدريباً دفاعياً لفرق صغيرة. أنت العضو الرابع في فريقك.",
+    "incident_description": "طلبات 404 متكررة لمسارات إدارية",
+    "scope_authorization": "التحقيق مصرح به على الأدلة الاصطناعية المعروضة فقط. لا تفحص أنظمة حقيقية.",
+    "evidence": [
+      {
+        "id": "mis06_ev1",
+        "type": "log",
+        "title": "سجل اصطناعي أساسي",
+        "required": true,
+        "status": "confirmed",
+        "content": "10.10.20.9 GET /admin 404\n10.10.20.9 GET /backup 404\n10.10.20.9 GET /config 404\n10.10.20.4 GET / 200"
+      },
+      {
+        "id": "mis06_ev2",
+        "type": "note",
+        "title": "ملاحظة نطاق وتفويض",
+        "required": true,
+        "status": "confirmed",
+        "content": "كل البيانات اصطناعية. الفحص مصرح به داخل بيئة CYBER LIFE التدريبية فقط."
+      }
+    ],
+    "teammate_comments": [
+      {
+        "teammate_id": "tm_researcher",
+        "topic": "initial",
+        "status": "hypothesis",
+        "text": "أقترح أن السبب مرتبط بـطلبات 404 متكررة لمسارات إدارية. هذه فرضية تحتاج دليلاً إضافياً.",
+        "evidence_ids": [
+          "mis06_ev1"
+        ]
+      },
+      {
+        "teammate_id": "tm_log_analyst",
+        "topic": "timeline",
+        "status": "confirmed_evidence",
+        "text": "الأحداث المعروضة مرتبة زمنياً في السجل الاصطناعي؛ يجب توحيدها إلى UTC قبل الدمج.",
+        "evidence_ids": [
+          "mis06_ev1"
+        ]
+      },
+      {
+        "teammate_id": "tm_risk_docs",
+        "topic": "report",
+        "status": "opinion",
+        "text": "أرى أن التقرير يجب أن يذكر الأثر والحدود وإجراءً بمالك وزمن. هذا رأي تنظيمي وليس دليلاً تقنياً.",
+        "evidence_ids": [
+          "mis06_ev2"
+        ]
+      },
+      {
+        "teammate_id": "tm_researcher",
+        "topic": "alternative",
+        "status": "unverified_assumption",
+        "text": "قد يكون النشاط ضاراً لأن العنوان خارجي. هذا افتراض غير مؤكد؛ الخارجية وحدها لا تكفي.",
+        "evidence_ids": [
+          "mis06_ev1"
+        ]
+      }
+    ],
+    "investigation_questions": [
+      {
+        "id": "mis06_q1",
+        "prompt": "ما النمط؟",
+        "options": [
+          {
+            "id": "a",
+            "text": "استكشاف مسارات"
+          },
+          {
+            "id": "b",
+            "text": "نجاح دخول"
+          },
+          {
+            "id": "c",
+            "text": "تحديث نظام"
+          }
+        ],
+        "explanation": "الإجابة الصحيحة تعتمد على الدليل والسياق وليس الانطباع السريع."
+      },
+      {
+        "id": "mis06_q2",
+        "prompt": "ما التحقق المناسب؟",
+        "options": [
+          {
+            "id": "a",
+            "text": "حظر فوري للجميع"
+          },
+          {
+            "id": "b",
+            "text": "مراجعة التفويض وسجل التطبيق"
+          },
+          {
+            "id": "c",
+            "text": "تجاهل"
+          }
+        ],
+        "explanation": "الإجابة الصحيحة تعتمد على الدليل والسياق وليس الانطباع السريع."
+      }
+    ],
+    "answer_key": {
+      "decisions": {
+        "mis06_q1": "a",
+        "mis06_q2": "b"
+      }
+    },
+    "evaluation": {
+      "passing_score": 70,
+      "findings_rubric": [
+        {
+          "id": "c1",
+          "label": "ذكر 404",
+          "weight": 1,
+          "any_of": [
+            [
+              "404"
+            ]
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ذكر مسارات",
+          "weight": 1,
+          "any_of": [
+            [
+              "مسارات"
+            ]
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "ذكر استكشاف",
+          "weight": 1,
+          "any_of": [
+            [
+              "استكشاف"
+            ]
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "ذكر تفويض",
+          "weight": 1,
+          "any_of": [
+            [
+              "تفويض"
+            ]
+          ]
+        }
+      ],
+      "report_rubric": [
+        {
+          "id": "c1",
+          "label": "ذكر 404",
+          "weight": 1,
+          "any_of": [
+            [
+              "404"
+            ]
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ذكر مسارات",
+          "weight": 1,
+          "any_of": [
+            [
+              "مسارات"
+            ]
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "ذكر استكشاف",
+          "weight": 1,
+          "any_of": [
+            [
+              "استكشاف"
+            ]
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "ذكر تفويض",
+          "weight": 1,
+          "any_of": [
+            [
+              "تفويض"
+            ]
+          ]
+        }
+      ]
+    },
+    "published": true
+  },
+  {
+    "id": "mis07",
+    "order": 7,
+    "identifier": "CL-2026-007",
+    "title": "صلاحية تقرير",
+    "chapter_id": "ch07",
+    "priority": "high",
+    "company_background": "شركة CYBER LIFE الافتراضية تقدم تدريباً دفاعياً لفرق صغيرة. أنت العضو الرابع في فريقك.",
+    "incident_description": "طالب يرى تقرير طالب آخر عبر تغيير المعرّف",
+    "scope_authorization": "التحقيق مصرح به على الأدلة الاصطناعية المعروضة فقط. لا تفحص أنظمة حقيقية.",
+    "evidence": [
+      {
+        "id": "mis07_ev1",
+        "type": "log",
+        "title": "سجل اصطناعي أساسي",
+        "required": true,
+        "status": "confirmed",
+        "content": "GET /reports/102 user=student01 200\nreport 102 owner=student02\nauthorization check missing"
+      },
+      {
+        "id": "mis07_ev2",
+        "type": "note",
+        "title": "ملاحظة نطاق وتفويض",
+        "required": true,
+        "status": "confirmed",
+        "content": "كل البيانات اصطناعية. الفحص مصرح به داخل بيئة CYBER LIFE التدريبية فقط."
+      }
+    ],
+    "teammate_comments": [
+      {
+        "teammate_id": "tm_researcher",
+        "topic": "initial",
+        "status": "hypothesis",
+        "text": "أقترح أن السبب مرتبط بـطالب يرى تقرير طالب آخر عبر تغيير المعرّف. هذه فرضية تحتاج دليلاً إضافياً.",
+        "evidence_ids": [
+          "mis07_ev1"
+        ]
+      },
+      {
+        "teammate_id": "tm_log_analyst",
+        "topic": "timeline",
+        "status": "confirmed_evidence",
+        "text": "الأحداث المعروضة مرتبة زمنياً في السجل الاصطناعي؛ يجب توحيدها إلى UTC قبل الدمج.",
+        "evidence_ids": [
+          "mis07_ev1"
+        ]
+      },
+      {
+        "teammate_id": "tm_risk_docs",
+        "topic": "report",
+        "status": "opinion",
+        "text": "أرى أن التقرير يجب أن يذكر الأثر والحدود وإجراءً بمالك وزمن. هذا رأي تنظيمي وليس دليلاً تقنياً.",
+        "evidence_ids": [
+          "mis07_ev2"
+        ]
+      },
+      {
+        "teammate_id": "tm_researcher",
+        "topic": "alternative",
+        "status": "unverified_assumption",
+        "text": "قد يكون النشاط ضاراً لأن العنوان خارجي. هذا افتراض غير مؤكد؛ الخارجية وحدها لا تكفي.",
+        "evidence_ids": [
+          "mis07_ev1"
+        ]
+      }
+    ],
+    "investigation_questions": [
+      {
+        "id": "mis07_q1",
+        "prompt": "ما التصنيف؟",
+        "options": [
+          {
+            "id": "a",
+            "text": "IDOR"
+          },
+          {
+            "id": "b",
+            "text": "DNS"
+          },
+          {
+            "id": "c",
+            "text": "ضغط"
+          }
+        ],
+        "explanation": "الإجابة الصحيحة تعتمد على الدليل والسياق وليس الانطباع السريع."
+      },
+      {
+        "id": "mis07_q2",
+        "prompt": "ما الإصلاح الأساسي؟",
+        "options": [
+          {
+            "id": "a",
+            "text": "إخفاء الرابط"
+          },
+          {
+            "id": "b",
+            "text": "فحص ملكية/صلاحية خادمية"
+          },
+          {
+            "id": "c",
+            "text": "تكبير الخط"
+          }
+        ],
+        "explanation": "الإجابة الصحيحة تعتمد على الدليل والسياق وليس الانطباع السريع."
+      }
+    ],
+    "answer_key": {
+      "decisions": {
+        "mis07_q1": "a",
+        "mis07_q2": "b"
+      }
+    },
+    "evaluation": {
+      "passing_score": 70,
+      "findings_rubric": [
+        {
+          "id": "c1",
+          "label": "ذكر تفويض",
+          "weight": 1,
+          "any_of": [
+            [
+              "تفويض"
+            ]
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ذكر ملكية",
+          "weight": 1,
+          "any_of": [
+            [
+              "ملكية"
+            ]
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "ذكر خادم",
+          "weight": 1,
+          "any_of": [
+            [
+              "خادم"
+            ]
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "ذكر IDOR",
+          "weight": 1,
+          "any_of": [
+            [
+              "IDOR"
+            ]
+          ]
+        }
+      ],
+      "report_rubric": [
+        {
+          "id": "c1",
+          "label": "ذكر تفويض",
+          "weight": 1,
+          "any_of": [
+            [
+              "تفويض"
+            ]
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ذكر ملكية",
+          "weight": 1,
+          "any_of": [
+            [
+              "ملكية"
+            ]
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "ذكر خادم",
+          "weight": 1,
+          "any_of": [
+            [
+              "خادم"
+            ]
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "ذكر IDOR",
+          "weight": 1,
+          "any_of": [
+            [
+              "IDOR"
+            ]
+          ]
+        }
+      ]
+    },
+    "published": true
+  },
+  {
+    "id": "mis08",
+    "order": 8,
+    "identifier": "CL-2026-008",
+    "title": "إعداد TLS",
+    "chapter_id": "ch08",
+    "priority": "medium",
+    "company_background": "شركة CYBER LIFE الافتراضية تقدم تدريباً دفاعياً لفرق صغيرة. أنت العضو الرابع في فريقك.",
+    "incident_description": "شهادة منتهية في خدمة تدريب",
+    "scope_authorization": "التحقيق مصرح به على الأدلة الاصطناعية المعروضة فقط. لا تفحص أنظمة حقيقية.",
+    "evidence": [
+      {
+        "id": "mis08_ev1",
+        "type": "log",
+        "title": "سجل اصطناعي أساسي",
+        "required": true,
+        "status": "confirmed",
+        "content": "tls verify error certificate expired\nservice=training-portal port=443\nnotAfter=2026-01-01"
+      },
+      {
+        "id": "mis08_ev2",
+        "type": "note",
+        "title": "ملاحظة نطاق وتفويض",
+        "required": true,
+        "status": "confirmed",
+        "content": "كل البيانات اصطناعية. الفحص مصرح به داخل بيئة CYBER LIFE التدريبية فقط."
+      }
+    ],
+    "teammate_comments": [
+      {
+        "teammate_id": "tm_researcher",
+        "topic": "initial",
+        "status": "hypothesis",
+        "text": "أقترح أن السبب مرتبط بـشهادة منتهية في خدمة تدريب. هذه فرضية تحتاج دليلاً إضافياً.",
+        "evidence_ids": [
+          "mis08_ev1"
+        ]
+      },
+      {
+        "teammate_id": "tm_log_analyst",
+        "topic": "timeline",
+        "status": "confirmed_evidence",
+        "text": "الأحداث المعروضة مرتبة زمنياً في السجل الاصطناعي؛ يجب توحيدها إلى UTC قبل الدمج.",
+        "evidence_ids": [
+          "mis08_ev1"
+        ]
+      },
+      {
+        "teammate_id": "tm_risk_docs",
+        "topic": "report",
+        "status": "opinion",
+        "text": "أرى أن التقرير يجب أن يذكر الأثر والحدود وإجراءً بمالك وزمن. هذا رأي تنظيمي وليس دليلاً تقنياً.",
+        "evidence_ids": [
+          "mis08_ev2"
+        ]
+      },
+      {
+        "teammate_id": "tm_researcher",
+        "topic": "alternative",
+        "status": "unverified_assumption",
+        "text": "قد يكون النشاط ضاراً لأن العنوان خارجي. هذا افتراض غير مؤكد؛ الخارجية وحدها لا تكفي.",
+        "evidence_ids": [
+          "mis08_ev1"
+        ]
+      }
+    ],
+    "investigation_questions": [
+      {
+        "id": "mis08_q1",
+        "prompt": "ما الإجراء؟",
+        "options": [
+          {
+            "id": "a",
+            "text": "تجاهل التحذير"
+          },
+          {
+            "id": "b",
+            "text": "تجديد الشهادة وإصلاح الإعداد"
+          },
+          {
+            "id": "c",
+            "text": "تعطيل السجلات"
+          }
+        ],
+        "explanation": "الإجابة الصحيحة تعتمد على الدليل والسياق وليس الانطباع السريع."
+      },
+      {
+        "id": "mis08_q2",
+        "prompt": "ما الذي يحميه TLS؟",
+        "options": [
+          {
+            "id": "a",
+            "text": "النقل"
+          },
+          {
+            "id": "b",
+            "text": "منطق التطبيق كله"
+          },
+          {
+            "id": "c",
+            "text": "كلمات المرور في القاعدة تلقائياً"
+          }
+        ],
+        "explanation": "الإجابة الصحيحة تعتمد على الدليل والسياق وليس الانطباع السريع."
+      }
+    ],
+    "answer_key": {
+      "decisions": {
+        "mis08_q1": "b",
+        "mis08_q2": "a"
+      }
+    },
+    "evaluation": {
+      "passing_score": 70,
+      "findings_rubric": [
+        {
+          "id": "c1",
+          "label": "ذكر شهادة",
+          "weight": 1,
+          "any_of": [
+            [
+              "شهادة"
+            ]
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ذكر تجديد",
+          "weight": 1,
+          "any_of": [
+            [
+              "تجديد"
+            ]
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "ذكر نقل",
+          "weight": 1,
+          "any_of": [
+            [
+              "نقل"
+            ]
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "ذكر TLS",
+          "weight": 1,
+          "any_of": [
+            [
+              "TLS"
+            ]
+          ]
+        }
+      ],
+      "report_rubric": [
+        {
+          "id": "c1",
+          "label": "ذكر شهادة",
+          "weight": 1,
+          "any_of": [
+            [
+              "شهادة"
+            ]
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ذكر تجديد",
+          "weight": 1,
+          "any_of": [
+            [
+              "تجديد"
+            ]
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "ذكر نقل",
+          "weight": 1,
+          "any_of": [
+            [
+              "نقل"
+            ]
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "ذكر TLS",
+          "weight": 1,
+          "any_of": [
+            [
+              "TLS"
+            ]
+          ]
+        }
+      ]
+    },
+    "published": true
+  },
+  {
+    "id": "mis09",
+    "order": 9,
+    "identifier": "CL-2026-009",
+    "title": "حساب خالم",
+    "chapter_id": "ch09",
+    "priority": "high",
+    "company_background": "شركة CYBER LIFE الافتراضية تقدم تدريباً دفاعياً لفرق صغيرة. أنت العضو الرابع في فريقك.",
+    "incident_description": "حساب موظف غادر ما زال فعالاً",
+    "scope_authorization": "التحقيق مصرح به على الأدلة الاصطناعية المعروضة فقط. لا تفحص أنظمة حقيقية.",
+    "evidence": [
+      {
+        "id": "mis09_ev1",
+        "type": "log",
+        "title": "سجل اصطناعي أساسي",
+        "required": true,
+        "status": "confirmed",
+        "content": "user=old_staff active=true last_login=90d\nrole=admin\nsession active"
+      },
+      {
+        "id": "mis09_ev2",
+        "type": "note",
+        "title": "ملاحظة نطاق وتفويض",
+        "required": true,
+        "status": "confirmed",
+        "content": "كل البيانات اصطناعية. الفحص مصرح به داخل بيئة CYBER LIFE التدريبية فقط."
+      }
+    ],
+    "teammate_comments": [
+      {
+        "teammate_id": "tm_researcher",
+        "topic": "initial",
+        "status": "hypothesis",
+        "text": "أقترح أن السبب مرتبط بـحساب موظف غادر ما زال فعالاً. هذه فرضية تحتاج دليلاً إضافياً.",
+        "evidence_ids": [
+          "mis09_ev1"
+        ]
+      },
+      {
+        "teammate_id": "tm_log_analyst",
+        "topic": "timeline",
+        "status": "confirmed_evidence",
+        "text": "الأحداث المعروضة مرتبة زمنياً في السجل الاصطناعي؛ يجب توحيدها إلى UTC قبل الدمج.",
+        "evidence_ids": [
+          "mis09_ev1"
+        ]
+      },
+      {
+        "teammate_id": "tm_risk_docs",
+        "topic": "report",
+        "status": "opinion",
+        "text": "أرى أن التقرير يجب أن يذكر الأثر والحدود وإجراءً بمالك وزمن. هذا رأي تنظيمي وليس دليلاً تقنياً.",
+        "evidence_ids": [
+          "mis09_ev2"
+        ]
+      },
+      {
+        "teammate_id": "tm_researcher",
+        "topic": "alternative",
+        "status": "unverified_assumption",
+        "text": "قد يكون النشاط ضاراً لأن العنوان خارجي. هذا افتراض غير مؤكد؛ الخارجية وحدها لا تكفي.",
+        "evidence_ids": [
+          "mis09_ev1"
+        ]
+      }
+    ],
+    "investigation_questions": [
+      {
+        "id": "mis09_q1",
+        "prompt": "ما الإجراء؟",
+        "options": [
+          {
+            "id": "a",
+            "text": "تعطيل الحساب وإبطال الجلسات"
+          },
+          {
+            "id": "b",
+            "text": "تركه"
+          },
+          {
+            "id": "c",
+            "text": "ترقيته"
+          }
+        ],
+        "explanation": "الإجابة الصحيحة تعتمد على الدليل والسياق وليس الانطباع السريع."
+      },
+      {
+        "id": "mis09_q2",
+        "prompt": "ما الذي يحفظ؟",
+        "options": [
+          {
+            "id": "a",
+            "text": "سجلات التدقيق"
+          },
+          {
+            "id": "b",
+            "text": "كلمة المرور"
+          },
+          {
+            "id": "c",
+            "text": "الجلسات للأبد"
+          }
+        ],
+        "explanation": "الإجابة الصحيحة تعتمد على الدليل والسياق وليس الانطباع السريع."
+      }
+    ],
+    "answer_key": {
+      "decisions": {
+        "mis09_q1": "a",
+        "mis09_q2": "a"
+      }
+    },
+    "evaluation": {
+      "passing_score": 70,
+      "findings_rubric": [
+        {
+          "id": "c1",
+          "label": "ذكر تعطيل",
+          "weight": 1,
+          "any_of": [
+            [
+              "تعطيل"
+            ]
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ذكر جلسات",
+          "weight": 1,
+          "any_of": [
+            [
+              "جلسات"
+            ]
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "ذكر خامل",
+          "weight": 1,
+          "any_of": [
+            [
+              "خامل"
+            ]
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "ذكر تدقيق",
+          "weight": 1,
+          "any_of": [
+            [
+              "تدقيق"
+            ]
+          ]
+        }
+      ],
+      "report_rubric": [
+        {
+          "id": "c1",
+          "label": "ذكر تعطيل",
+          "weight": 1,
+          "any_of": [
+            [
+              "تعطيل"
+            ]
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ذكر جلسات",
+          "weight": 1,
+          "any_of": [
+            [
+              "جلسات"
+            ]
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "ذكر خامل",
+          "weight": 1,
+          "any_of": [
+            [
+              "خامل"
+            ]
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "ذكر تدقيق",
+          "weight": 1,
+          "any_of": [
+            [
+              "تدقيق"
+            ]
+          ]
+        }
+      ]
+    },
+    "published": true
+  },
+  {
+    "id": "mis10",
+    "order": 10,
+    "identifier": "CL-2026-010",
+    "title": "فجوة سجلات",
+    "chapter_id": "ch10",
+    "priority": "medium",
+    "company_background": "شركة CYBER LIFE الافتراضية تقدم تدريباً دفاعياً لفرق صغيرة. أنت العضو الرابع في فريقك.",
+    "incident_description": "سجل غير متاح بين 02:00 و03:00",
+    "scope_authorization": "التحقيق مصرح به على الأدلة الاصطناعية المعروضة فقط. لا تفحص أنظمة حقيقية.",
+    "evidence": [
+      {
+        "id": "mis10_ev1",
+        "type": "log",
+        "title": "سجل اصطناعي أساسي",
+        "required": true,
+        "status": "confirmed",
+        "content": "log gap start=02:00 end=03:00 source=app\nweb log present\nidentity log present"
+      },
+      {
+        "id": "mis10_ev2",
+        "type": "note",
+        "title": "ملاحظة نطاق وتفويض",
+        "required": true,
+        "status": "confirmed",
+        "content": "كل البيانات اصطناعية. الفحص مصرح به داخل بيئة CYBER LIFE التدريبية فقط."
+      }
+    ],
+    "teammate_comments": [
+      {
+        "teammate_id": "tm_researcher",
+        "topic": "initial",
+        "status": "hypothesis",
+        "text": "أقترح أن السبب مرتبط بـسجل غير متاح بين 02:00 و03:00. هذه فرضية تحتاج دليلاً إضافياً.",
+        "evidence_ids": [
+          "mis10_ev1"
+        ]
+      },
+      {
+        "teammate_id": "tm_log_analyst",
+        "topic": "timeline",
+        "status": "confirmed_evidence",
+        "text": "الأحداث المعروضة مرتبة زمنياً في السجل الاصطناعي؛ يجب توحيدها إلى UTC قبل الدمج.",
+        "evidence_ids": [
+          "mis10_ev1"
+        ]
+      },
+      {
+        "teammate_id": "tm_risk_docs",
+        "topic": "report",
+        "status": "opinion",
+        "text": "أرى أن التقرير يجب أن يذكر الأثر والحدود وإجراءً بمالك وزمن. هذا رأي تنظيمي وليس دليلاً تقنياً.",
+        "evidence_ids": [
+          "mis10_ev2"
+        ]
+      },
+      {
+        "teammate_id": "tm_researcher",
+        "topic": "alternative",
+        "status": "unverified_assumption",
+        "text": "قد يكون النشاط ضاراً لأن العنوان خارجي. هذا افتراض غير مؤكد؛ الخارجية وحدها لا تكفي.",
+        "evidence_ids": [
+          "mis10_ev1"
+        ]
+      }
+    ],
+    "investigation_questions": [
+      {
+        "id": "mis10_q1",
+        "prompt": "ما الاستنتاج الصحيح؟",
+        "options": [
+          {
+            "id": "a",
+            "text": "لا نشاط يقيناً"
+          },
+          {
+            "id": "b",
+            "text": "فجوة يجب ذكرها والبحث عن بديل"
+          },
+          {
+            "id": "c",
+            "text": "اختراق مؤكد"
+          }
+        ],
+        "explanation": "الإجابة الصحيحة تعتمد على الدليل والسياق وليس الانطباع السريع."
+      },
+      {
+        "id": "mis10_q2",
+        "prompt": "ما التوحيد المطلوب؟",
+        "options": [
+          {
+            "id": "a",
+            "text": "حذف الأوقات"
+          },
+          {
+            "id": "b",
+            "text": "UTC"
+          },
+          {
+            "id": "c",
+            "text": "اختيار الأقصر"
+          }
+        ],
+        "explanation": "الإجابة الصحيحة تعتمد على الدليل والسياق وليس الانطباع السريع."
+      }
+    ],
+    "answer_key": {
+      "decisions": {
+        "mis10_q1": "b",
+        "mis10_q2": "b"
+      }
+    },
+    "evaluation": {
+      "passing_score": 70,
+      "findings_rubric": [
+        {
+          "id": "c1",
+          "label": "ذكر فجوة",
+          "weight": 1,
+          "any_of": [
+            [
+              "فجوة"
+            ]
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ذكر UTC",
+          "weight": 1,
+          "any_of": [
+            [
+              "UTC"
+            ]
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "ذكر مصدر",
+          "weight": 1,
+          "any_of": [
+            [
+              "مصدر"
+            ]
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "ذكر بديل",
+          "weight": 1,
+          "any_of": [
+            [
+              "بديل"
+            ]
+          ]
+        }
+      ],
+      "report_rubric": [
+        {
+          "id": "c1",
+          "label": "ذكر فجوة",
+          "weight": 1,
+          "any_of": [
+            [
+              "فجوة"
+            ]
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ذكر UTC",
+          "weight": 1,
+          "any_of": [
+            [
+              "UTC"
+            ]
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "ذكر مصدر",
+          "weight": 1,
+          "any_of": [
+            [
+              "مصدر"
+            ]
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "ذكر بديل",
+          "weight": 1,
+          "any_of": [
+            [
+              "بديل"
+            ]
+          ]
+        }
+      ]
+    },
+    "published": true
+  },
+  {
+    "id": "mis11",
+    "order": 11,
+    "identifier": "CL-2026-011",
+    "title": "حادث حساب مشبوه",
+    "chapter_id": "ch11",
+    "priority": "high",
+    "company_background": "شركة CYBER LIFE الافتراضية تقدم تدريباً دفاعياً لفرق صغيرة. أنت العضو الرابع في فريقك.",
+    "incident_description": "نجاح دخول من عنوان جديد بعد فشل",
+    "scope_authorization": "التحقيق مصرح به على الأدلة الاصطناعية المعروضة فقط. لا تفحص أنظمة حقيقية.",
+    "evidence": [
+      {
+        "id": "mis11_ev1",
+        "type": "log",
+        "title": "سجل اصطناعي أساسي",
+        "required": true,
+        "status": "confirmed",
+        "content": "auth failed x8 ip=10.10.20.9\nauth success user=student01 ip=10.10.20.77\nsession created\nfile access /grades"
+      },
+      {
+        "id": "mis11_ev2",
+        "type": "note",
+        "title": "ملاحظة نطاق وتفويض",
+        "required": true,
+        "status": "confirmed",
+        "content": "كل البيانات اصطناعية. الفحص مصرح به داخل بيئة CYBER LIFE التدريبية فقط."
+      }
+    ],
+    "teammate_comments": [
+      {
+        "teammate_id": "tm_researcher",
+        "topic": "initial",
+        "status": "hypothesis",
+        "text": "أقترح أن السبب مرتبط بـنجاح دخول من عنوان جديد بعد فشل. هذه فرضية تحتاج دليلاً إضافياً.",
+        "evidence_ids": [
+          "mis11_ev1"
+        ]
+      },
+      {
+        "teammate_id": "tm_log_analyst",
+        "topic": "timeline",
+        "status": "confirmed_evidence",
+        "text": "الأحداث المعروضة مرتبة زمنياً في السجل الاصطناعي؛ يجب توحيدها إلى UTC قبل الدمج.",
+        "evidence_ids": [
+          "mis11_ev1"
+        ]
+      },
+      {
+        "teammate_id": "tm_risk_docs",
+        "topic": "report",
+        "status": "opinion",
+        "text": "أرى أن التقرير يجب أن يذكر الأثر والحدود وإجراءً بمالك وزمن. هذا رأي تنظيمي وليس دليلاً تقنياً.",
+        "evidence_ids": [
+          "mis11_ev2"
+        ]
+      },
+      {
+        "teammate_id": "tm_researcher",
+        "topic": "alternative",
+        "status": "unverified_assumption",
+        "text": "قد يكون النشاط ضاراً لأن العنوان خارجي. هذا افتراض غير مؤكد؛ الخارجية وحدها لا تكفي.",
+        "evidence_ids": [
+          "mis11_ev1"
+        ]
+      }
+    ],
+    "investigation_questions": [
+      {
+        "id": "mis11_q1",
+        "prompt": "ما الاحتواء المناسب؟",
+        "options": [
+          {
+            "id": "a",
+            "text": "تعطيل مؤقت وإبطال جلسات"
+          },
+          {
+            "id": "b",
+            "text": "حذف كل السجلات"
+          },
+          {
+            "id": "c",
+            "text": "نشر الحادث"
+          }
+        ],
+        "explanation": "الإجابة الصحيحة تعتمد على الدليل والسياق وليس الانطباع السريع."
+      },
+      {
+        "id": "mis11_q2",
+        "prompt": "ما الذي يحفظ؟",
+        "options": [
+          {
+            "id": "a",
+            "text": "نسخة عمل وسلسلة حيازة"
+          },
+          {
+            "id": "b",
+            "text": "الأصل يتغير"
+          },
+          {
+            "id": "c",
+            "text": "لا شيء"
+          }
+        ],
+        "explanation": "الإجابة الصحيحة تعتمد على الدليل والسياق وليس الانطباع السريع."
+      }
+    ],
+    "answer_key": {
+      "decisions": {
+        "mis11_q1": "a",
+        "mis11_q2": "a"
+      }
+    },
+    "evaluation": {
+      "passing_score": 70,
+      "findings_rubric": [
+        {
+          "id": "c1",
+          "label": "ذكر احتواء",
+          "weight": 1,
+          "any_of": [
+            [
+              "احتواء"
+            ]
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ذكر تعطيل",
+          "weight": 1,
+          "any_of": [
+            [
+              "تعطيل"
+            ]
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "ذكر جلسات",
+          "weight": 1,
+          "any_of": [
+            [
+              "جلسات"
+            ]
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "ذكر دليل",
+          "weight": 1,
+          "any_of": [
+            [
+              "دليل"
+            ]
+          ]
+        }
+      ],
+      "report_rubric": [
+        {
+          "id": "c1",
+          "label": "ذكر احتواء",
+          "weight": 1,
+          "any_of": [
+            [
+              "احتواء"
+            ]
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ذكر تعطيل",
+          "weight": 1,
+          "any_of": [
+            [
+              "تعطيل"
+            ]
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "ذكر جلسات",
+          "weight": 1,
+          "any_of": [
+            [
+              "جلسات"
+            ]
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "ذكر دليل",
+          "weight": 1,
+          "any_of": [
+            [
+              "دليل"
+            ]
+          ]
+        }
+      ]
+    },
+    "published": true
+  },
+  {
+    "id": "mis12",
+    "order": 12,
+    "identifier": "CL-2026-012",
+    "title": "نتيجة فحص غير مؤكدة",
+    "chapter_id": "ch12",
+    "priority": "medium",
+    "company_background": "شركة CYBER LIFE الافتراضية تقدم تدريباً دفاعياً لفرق صغيرة. أنت العضو الرابع في فريقك.",
+    "incident_description": "أداة تشير لإصدار قديم خلف وكيل",
+    "scope_authorization": "التحقيق مصرح به على الأدلة الاصطناعية المعروضة فقط. لا تفحص أنظمة حقيقية.",
+    "evidence": [
+      {
+        "id": "mis12_ev1",
+        "type": "log",
+        "title": "سجل اصطناعي أساسي",
+        "required": true,
+        "status": "confirmed",
+        "content": "scanner finding outdated_version\nserver header proxy/1.0\nactual backend version current"
+      },
+      {
+        "id": "mis12_ev2",
+        "type": "note",
+        "title": "ملاحظة نطاق وتفويض",
+        "required": true,
+        "status": "confirmed",
+        "content": "كل البيانات اصطناعية. الفحص مصرح به داخل بيئة CYBER LIFE التدريبية فقط."
+      }
+    ],
+    "teammate_comments": [
+      {
+        "teammate_id": "tm_researcher",
+        "topic": "initial",
+        "status": "hypothesis",
+        "text": "أقترح أن السبب مرتبط بـأداة تشير لإصدار قديم خلف وكيل. هذه فرضية تحتاج دليلاً إضافياً.",
+        "evidence_ids": [
+          "mis12_ev1"
+        ]
+      },
+      {
+        "teammate_id": "tm_log_analyst",
+        "topic": "timeline",
+        "status": "confirmed_evidence",
+        "text": "الأحداث المعروضة مرتبة زمنياً في السجل الاصطناعي؛ يجب توحيدها إلى UTC قبل الدمج.",
+        "evidence_ids": [
+          "mis12_ev1"
+        ]
+      },
+      {
+        "teammate_id": "tm_risk_docs",
+        "topic": "report",
+        "status": "opinion",
+        "text": "أرى أن التقرير يجب أن يذكر الأثر والحدود وإجراءً بمالك وزمن. هذا رأي تنظيمي وليس دليلاً تقنياً.",
+        "evidence_ids": [
+          "mis12_ev2"
+        ]
+      },
+      {
+        "teammate_id": "tm_researcher",
+        "topic": "alternative",
+        "status": "unverified_assumption",
+        "text": "قد يكون النشاط ضاراً لأن العنوان خارجي. هذا افتراض غير مؤكد؛ الخارجية وحدها لا تكفي.",
+        "evidence_ids": [
+          "mis12_ev1"
+        ]
+      }
+    ],
+    "investigation_questions": [
+      {
+        "id": "mis12_q1",
+        "prompt": "ما التصنيف؟",
+        "options": [
+          {
+            "id": "a",
+            "text": "حقيقة مؤكدة"
+          },
+          {
+            "id": "b",
+            "text": "غير مؤكدة تحتاج تحققاً"
+          },
+          {
+            "id": "c",
+            "text": "استغلال"
+          }
+        ],
+        "explanation": "الإجابة الصحيحة تعتمد على الدليل والسياق وليس الانطباع السريع."
+      },
+      {
+        "id": "mis12_q2",
+        "prompt": "ما الترتيب؟",
+        "options": [
+          {
+            "id": "a",
+            "text": "CVSS فقط"
+          },
+          {
+            "id": "b",
+            "text": "الاحتمال والأثر والسياق"
+          },
+          {
+            "id": "c",
+            "text": "اللون"
+          }
+        ],
+        "explanation": "الإجابة الصحيحة تعتمد على الدليل والسياق وليس الانطباع السريع."
+      }
+    ],
+    "answer_key": {
+      "decisions": {
+        "mis12_q1": "b",
+        "mis12_q2": "b"
+      }
+    },
+    "evaluation": {
+      "passing_score": 70,
+      "findings_rubric": [
+        {
+          "id": "c1",
+          "label": "ذكر تحقق",
+          "weight": 1,
+          "any_of": [
+            [
+              "تحقق"
+            ]
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ذكر غير مؤكد",
+          "weight": 1,
+          "any_of": [
+            [
+              "غير مؤكد"
+            ]
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "ذكر سياق",
+          "weight": 1,
+          "any_of": [
+            [
+              "سياق"
+            ]
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "ذكر أثر",
+          "weight": 1,
+          "any_of": [
+            [
+              "أثر"
+            ]
+          ]
+        }
+      ],
+      "report_rubric": [
+        {
+          "id": "c1",
+          "label": "ذكر تحقق",
+          "weight": 1,
+          "any_of": [
+            [
+              "تحقق"
+            ]
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ذكر غير مؤكد",
+          "weight": 1,
+          "any_of": [
+            [
+              "غير مؤكد"
+            ]
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "ذكر سياق",
+          "weight": 1,
+          "any_of": [
+            [
+              "سياق"
+            ]
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "ذكر أثر",
+          "weight": 1,
+          "any_of": [
+            [
+              "أثر"
+            ]
+          ]
+        }
+      ]
+    },
+    "published": true
+  },
+  {
+    "id": "mis13",
+    "order": 13,
+    "identifier": "CL-2026-013",
+    "title": "ضابط تعويضي",
+    "chapter_id": "ch13",
+    "priority": "medium",
+    "company_background": "شركة CYBER LIFE الافتراضية تقدم تدريباً دفاعياً لفرق صغيرة. أنت العضو الرابع في فريقك.",
+    "incident_description": "خدمة حساسة لا يمكن تحديثها فوراً",
+    "scope_authorization": "التحقيق مصرح به على الأدلة الاصطناعية المعروضة فقط. لا تفحص أنظمة حقيقية.",
+    "evidence": [
+      {
+        "id": "mis13_ev1",
+        "type": "log",
+        "title": "سجل اصطناعي أساسي",
+        "required": true,
+        "status": "confirmed",
+        "content": "service legacy required\npatch unavailable\naccess from any network"
+      },
+      {
+        "id": "mis13_ev2",
+        "type": "note",
+        "title": "ملاحظة نطاق وتفويض",
+        "required": true,
+        "status": "confirmed",
+        "content": "كل البيانات اصطناعية. الفحص مصرح به داخل بيئة CYBER LIFE التدريبية فقط."
+      }
+    ],
+    "teammate_comments": [
+      {
+        "teammate_id": "tm_researcher",
+        "topic": "initial",
+        "status": "hypothesis",
+        "text": "أقترح أن السبب مرتبط بـخدمة حساسة لا يمكن تحديثها فوراً. هذه فرضية تحتاج دليلاً إضافياً.",
+        "evidence_ids": [
+          "mis13_ev1"
+        ]
+      },
+      {
+        "teammate_id": "tm_log_analyst",
+        "topic": "timeline",
+        "status": "confirmed_evidence",
+        "text": "الأحداث المعروضة مرتبة زمنياً في السجل الاصطناعي؛ يجب توحيدها إلى UTC قبل الدمج.",
+        "evidence_ids": [
+          "mis13_ev1"
+        ]
+      },
+      {
+        "teammate_id": "tm_risk_docs",
+        "topic": "report",
+        "status": "opinion",
+        "text": "أرى أن التقرير يجب أن يذكر الأثر والحدود وإجراءً بمالك وزمن. هذا رأي تنظيمي وليس دليلاً تقنياً.",
+        "evidence_ids": [
+          "mis13_ev2"
+        ]
+      },
+      {
+        "teammate_id": "tm_researcher",
+        "topic": "alternative",
+        "status": "unverified_assumption",
+        "text": "قد يكون النشاط ضاراً لأن العنوان خارجي. هذا افتراض غير مؤكد؛ الخارجية وحدها لا تكفي.",
+        "evidence_ids": [
+          "mis13_ev1"
+        ]
+      }
+    ],
+    "investigation_questions": [
+      {
+        "id": "mis13_q1",
+        "prompt": "ما الإجراء؟",
+        "options": [
+          {
+            "id": "a",
+            "text": "تقييد الوصول ومراقبة مكثفة"
+          },
+          {
+            "id": "b",
+            "text": "فتحها للجميع"
+          },
+          {
+            "id": "c",
+            "text": "حذف السجلات"
+          }
+        ],
+        "explanation": "الإجابة الصحيحة تعتمد على الدليل والسياق وليس الانطباع السريع."
+      },
+      {
+        "id": "mis13_q2",
+        "prompt": "ما شرط الضابط؟",
+        "options": [
+          {
+            "id": "a",
+            "text": "موثق ومؤقت بخطة"
+          },
+          {
+            "id": "b",
+            "text": "دائم سراً"
+          },
+          {
+            "id": "c",
+            "text": "بلا مالك"
+          }
+        ],
+        "explanation": "الإجابة الصحيحة تعتمد على الدليل والسياق وليس الانطباع السريع."
+      }
+    ],
+    "answer_key": {
+      "decisions": {
+        "mis13_q1": "a",
+        "mis13_q2": "a"
+      }
+    },
+    "evaluation": {
+      "passing_score": 70,
+      "findings_rubric": [
+        {
+          "id": "c1",
+          "label": "ذكر تقييد",
+          "weight": 1,
+          "any_of": [
+            [
+              "تقييد"
+            ]
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ذكر مراقبة",
+          "weight": 1,
+          "any_of": [
+            [
+              "مراقبة"
+            ]
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "ذكر مؤقت",
+          "weight": 1,
+          "any_of": [
+            [
+              "مؤقت"
+            ]
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "ذكر موثق",
+          "weight": 1,
+          "any_of": [
+            [
+              "موثق"
+            ]
+          ]
+        }
+      ],
+      "report_rubric": [
+        {
+          "id": "c1",
+          "label": "ذكر تقييد",
+          "weight": 1,
+          "any_of": [
+            [
+              "تقييد"
+            ]
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ذكر مراقبة",
+          "weight": 1,
+          "any_of": [
+            [
+              "مراقبة"
+            ]
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "ذكر مؤقت",
+          "weight": 1,
+          "any_of": [
+            [
+              "مؤقت"
+            ]
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "ذكر موثق",
+          "weight": 1,
+          "any_of": [
+            [
+              "موثق"
+            ]
+          ]
+        }
+      ]
+    },
+    "published": true
+  },
+  {
+    "id": "mis14",
+    "order": 14,
+    "identifier": "CL-2026-014",
+    "title": "نوبة SOC",
+    "chapter_id": "ch14",
+    "priority": "high",
+    "company_background": "شركة CYBER LIFE الافتراضية تقدم تدريباً دفاعياً لفرق صغيرة. أنت العضو الرابع في فريقك.",
+    "incident_description": "تنبيهان أحدهما عالي الأثر",
+    "scope_authorization": "التحقيق مصرح به على الأدلة الاصطناعية المعروضة فقط. لا تفحص أنظمة حقيقية.",
+    "evidence": [
+      {
+        "id": "mis14_ev1",
+        "type": "log",
+        "title": "سجل اصطناعي أساسي",
+        "required": true,
+        "status": "confirmed",
+        "content": "alert A severity=high asset=portal\nalert B severity=low asset=test\nqueue pending"
+      },
+      {
+        "id": "mis14_ev2",
+        "type": "note",
+        "title": "ملاحظة نطاق وتفويض",
+        "required": true,
+        "status": "confirmed",
+        "content": "كل البيانات اصطناعية. الفحص مصرح به داخل بيئة CYBER LIFE التدريبية فقط."
+      }
+    ],
+    "teammate_comments": [
+      {
+        "teammate_id": "tm_researcher",
+        "topic": "initial",
+        "status": "hypothesis",
+        "text": "أقترح أن السبب مرتبط بـتنبيهان أحدهما عالي الأثر. هذه فرضية تحتاج دليلاً إضافياً.",
+        "evidence_ids": [
+          "mis14_ev1"
+        ]
+      },
+      {
+        "teammate_id": "tm_log_analyst",
+        "topic": "timeline",
+        "status": "confirmed_evidence",
+        "text": "الأحداث المعروضة مرتبة زمنياً في السجل الاصطناعي؛ يجب توحيدها إلى UTC قبل الدمج.",
+        "evidence_ids": [
+          "mis14_ev1"
+        ]
+      },
+      {
+        "teammate_id": "tm_risk_docs",
+        "topic": "report",
+        "status": "opinion",
+        "text": "أرى أن التقرير يجب أن يذكر الأثر والحدود وإجراءً بمالك وزمن. هذا رأي تنظيمي وليس دليلاً تقنياً.",
+        "evidence_ids": [
+          "mis14_ev2"
+        ]
+      },
+      {
+        "teammate_id": "tm_researcher",
+        "topic": "alternative",
+        "status": "unverified_assumption",
+        "text": "قد يكون النشاط ضاراً لأن العنوان خارجي. هذا افتراض غير مؤكد؛ الخارجية وحدها لا تكفي.",
+        "evidence_ids": [
+          "mis14_ev1"
+        ]
+      }
+    ],
+    "investigation_questions": [
+      {
+        "id": "mis14_q1",
+        "prompt": "ما الأولوية؟",
+        "options": [
+          {
+            "id": "a",
+            "text": "A حسب الأثر"
+          },
+          {
+            "id": "b",
+            "text": "B لأنه أقدم"
+          },
+          {
+            "id": "c",
+            "text": "عشوائي"
+          }
+        ],
+        "explanation": "الإجابة الصحيحة تعتمد على الدليل والسياق وليس الانطباع السريع."
+      },
+      {
+        "id": "mis14_q2",
+        "prompt": "ما التسليم؟",
+        "options": [
+          {
+            "id": "a",
+            "text": "تذاكر وأدلة وخطوات تالية"
+          },
+          {
+            "id": "b",
+            "text": "شفهي فقط"
+          },
+          {
+            "id": "c",
+            "text": "إخفاء المتبقي"
+          }
+        ],
+        "explanation": "الإجابة الصحيحة تعتمد على الدليل والسياق وليس الانطباع السريع."
+      }
+    ],
+    "answer_key": {
+      "decisions": {
+        "mis14_q1": "a",
+        "mis14_q2": "a"
+      }
+    },
+    "evaluation": {
+      "passing_score": 70,
+      "findings_rubric": [
+        {
+          "id": "c1",
+          "label": "ذكر فرز",
+          "weight": 1,
+          "any_of": [
+            [
+              "فرز"
+            ]
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ذكر أولوية",
+          "weight": 1,
+          "any_of": [
+            [
+              "أولوية"
+            ]
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "ذكر تسليم",
+          "weight": 1,
+          "any_of": [
+            [
+              "تسليم"
+            ]
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "ذكر تذكرة",
+          "weight": 1,
+          "any_of": [
+            [
+              "تذكرة"
+            ]
+          ]
+        }
+      ],
+      "report_rubric": [
+        {
+          "id": "c1",
+          "label": "ذكر فرز",
+          "weight": 1,
+          "any_of": [
+            [
+              "فرز"
+            ]
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ذكر أولوية",
+          "weight": 1,
+          "any_of": [
+            [
+              "أولوية"
+            ]
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "ذكر تسليم",
+          "weight": 1,
+          "any_of": [
+            [
+              "تسليم"
+            ]
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "ذكر تذكرة",
+          "weight": 1,
+          "any_of": [
+            [
+              "تذكرة"
+            ]
+          ]
+        }
+      ]
+    },
+    "published": true
+  },
+  {
+    "id": "mis15",
+    "order": 15,
+    "identifier": "CL-2026-015",
+    "title": "مشروع الشركة النهائي",
+    "chapter_id": "ch15",
+    "priority": "high",
+    "company_background": "شركة CYBER LIFE الافتراضية تقدم تدريباً دفاعياً لفرق صغيرة. أنت العضو الرابع في فريقك.",
+    "incident_description": "حادث مركب في بوابة التدريب",
+    "scope_authorization": "التحقيق مصرح به على الأدلة الاصطناعية المعروضة فقط. لا تفحص أنظمة حقيقية.",
+    "evidence": [
+      {
+        "id": "mis15_ev1",
+        "type": "log",
+        "title": "سجل اصطناعي أساسي",
+        "required": true,
+        "status": "confirmed",
+        "content": "auth failed x10 ip=10.10.20.9\nauth success ip=10.10.20.77\nGET /grades 200\nfile modified /tmp/.cache/update\nflow interval=60s dst=10.10.30.7"
+      },
+      {
+        "id": "mis15_ev2",
+        "type": "note",
+        "title": "ملاحظة نطاق وتفويض",
+        "required": true,
+        "status": "confirmed",
+        "content": "كل البيانات اصطناعية. الفحص مصرح به داخل بيئة CYBER LIFE التدريبية فقط."
+      }
+    ],
+    "teammate_comments": [
+      {
+        "teammate_id": "tm_researcher",
+        "topic": "initial",
+        "status": "hypothesis",
+        "text": "أقترح أن السبب مرتبط بـحادث مركب في بوابة التدريب. هذه فرضية تحتاج دليلاً إضافياً.",
+        "evidence_ids": [
+          "mis15_ev1"
+        ]
+      },
+      {
+        "teammate_id": "tm_log_analyst",
+        "topic": "timeline",
+        "status": "confirmed_evidence",
+        "text": "الأحداث المعروضة مرتبة زمنياً في السجل الاصطناعي؛ يجب توحيدها إلى UTC قبل الدمج.",
+        "evidence_ids": [
+          "mis15_ev1"
+        ]
+      },
+      {
+        "teammate_id": "tm_risk_docs",
+        "topic": "report",
+        "status": "opinion",
+        "text": "أرى أن التقرير يجب أن يذكر الأثر والحدود وإجراءً بمالك وزمن. هذا رأي تنظيمي وليس دليلاً تقنياً.",
+        "evidence_ids": [
+          "mis15_ev2"
+        ]
+      },
+      {
+        "teammate_id": "tm_researcher",
+        "topic": "alternative",
+        "status": "unverified_assumption",
+        "text": "قد يكون النشاط ضاراً لأن العنوان خارجي. هذا افتراض غير مؤكد؛ الخارجية وحدها لا تكفي.",
+        "evidence_ids": [
+          "mis15_ev1"
+        ]
+      }
+    ],
+    "investigation_questions": [
+      {
+        "id": "mis15_q1",
+        "prompt": "ما المنهج؟",
+        "options": [
+          {
+            "id": "a",
+            "text": "خط زمني واختبار فرضيات"
+          },
+          {
+            "id": "b",
+            "text": "قبول رأي الزميل"
+          },
+          {
+            "id": "c",
+            "text": "حذف الأدلة"
+          }
+        ],
+        "explanation": "الإجابة الصحيحة تعتمد على الدليل والسياق وليس الانطباع السريع."
+      },
+      {
+        "id": "mis15_q2",
+        "prompt": "ما التوصية؟",
+        "options": [
+          {
+            "id": "a",
+            "text": "إجراء بمالك وزمن وتحقق"
+          },
+          {
+            "id": "b",
+            "text": "حسنوا الأمن فقط"
+          },
+          {
+            "id": "c",
+            "text": "إغلاق بلا تقرير"
+          }
+        ],
+        "explanation": "الإجابة الصحيحة تعتمد على الدليل والسياق وليس الانطباع السريع."
+      }
+    ],
+    "answer_key": {
+      "decisions": {
+        "mis15_q1": "a",
+        "mis15_q2": "a"
+      }
+    },
+    "evaluation": {
+      "passing_score": 70,
+      "findings_rubric": [
+        {
+          "id": "c1",
+          "label": "ذكر خط زمني",
+          "weight": 1,
+          "any_of": [
+            [
+              "خط زمني"
+            ]
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ذكر فرضية",
+          "weight": 1,
+          "any_of": [
+            [
+              "فرضية"
+            ]
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "ذكر دليل",
+          "weight": 1,
+          "any_of": [
+            [
+              "دليل"
+            ]
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "ذكر توصية",
+          "weight": 1,
+          "any_of": [
+            [
+              "توصية"
+            ]
+          ]
+        }
+      ],
+      "report_rubric": [
+        {
+          "id": "c1",
+          "label": "ذكر خط زمني",
+          "weight": 1,
+          "any_of": [
+            [
+              "خط زمني"
+            ]
+          ]
+        },
+        {
+          "id": "c2",
+          "label": "ذكر فرضية",
+          "weight": 1,
+          "any_of": [
+            [
+              "فرضية"
+            ]
+          ]
+        },
+        {
+          "id": "c3",
+          "label": "ذكر دليل",
+          "weight": 1,
+          "any_of": [
+            [
+              "دليل"
+            ]
+          ]
+        },
+        {
+          "id": "c4",
+          "label": "ذكر توصية",
+          "weight": 1,
+          "any_of": [
+            [
+              "توصية"
+            ]
+          ]
+        }
+      ]
+    },
+    "published": true
+  }
+]

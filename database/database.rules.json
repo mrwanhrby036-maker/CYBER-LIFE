@@ -1,0 +1,110 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "users": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('admin_roles').child(auth.uid).val() === true)",
+        ".write": false,
+        ".validate": "newData.hasChildren(['uid', 'email', 'display_name', 'active'])"
+      }
+    },
+    "admin_roles": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('admin_roles').child(auth.uid).val() === true)",
+        ".write": false
+      }
+    },
+    "team_names": { ".read": false, ".write": false },
+    "teams": {
+      "$team_id": {
+        ".read": "auth != null && (data.child('owner_uid').val() === auth.uid || root.child('admin_roles').child(auth.uid).val() === true)",
+        ".write": false,
+        ".validate": "newData.hasChildren(['id', 'name', 'owner_uid'])"
+      }
+    },
+    "enrollments": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('admin_roles').child(auth.uid).val() === true)",
+        ".write": false
+      }
+    },
+    "curriculum": {
+      ".read": false,
+      ".write": false,
+      "chapters": {
+        "$chapter_id": {
+          ".read": "auth != null && data.child('published').val() === true",
+          ".validate": "newData.hasChildren(['id', 'order', 'title', 'published']) && newData.child('order').isNumber() && newData.child('order').val() >= 1 && newData.child('order').val() <= 99"
+        }
+      },
+      "lessons": {
+        "$lesson_id": {
+          ".read": "auth != null && data.child('published').val() === true",
+          ".validate": "newData.hasChildren(['id', 'chapter_id', 'title', 'published'])"
+        }
+      },
+      "assessments": {
+        "$assessment_id": {
+          ".read": "auth != null && data.child('published').val() === true"
+        }
+      },
+      "glossary": { ".read": "auth != null" },
+      "teammates": { ".read": "auth != null" },
+      "missions": { ".read": false, ".write": false },
+      "laboratory": { ".read": false, ".write": false }
+    },
+    "assessment_keys": { ".read": false, ".write": false },
+    "progress": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('admin_roles').child(auth.uid).val() === true)",
+        ".write": false
+      }
+    },
+    "assessments": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('admin_roles').child(auth.uid).val() === true)",
+        ".write": false
+      }
+    },
+    "mission_submissions": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('admin_roles').child(auth.uid).val() === true)",
+        ".write": false
+      }
+    },
+    "lab_sessions": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('admin_roles').child(auth.uid).val() === true)",
+        ".write": false
+      }
+    },
+    "reports": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('admin_roles').child(auth.uid).val() === true)",
+        ".write": false
+      }
+    },
+    "achievements": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('admin_roles').child(auth.uid).val() === true)",
+        ".write": false
+      }
+    },
+    "activity": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || root.child('admin_roles').child(auth.uid).val() === true)",
+        ".write": false
+      }
+    },
+    "audit_logs": {
+      ".read": "auth != null && root.child('admin_roles').child(auth.uid).val() === true",
+      ".write": false,
+      ".indexOn": ["created_at", "actor_uid"]
+    },
+    "platform_settings": {
+      ".read": "auth != null",
+      ".write": false
+    }
+  }
+}

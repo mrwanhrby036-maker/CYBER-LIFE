@@ -1,0 +1,9 @@
+.admin-grid{display:grid;grid-template-columns:1fr;gap:1rem}
+.admin-toolbar{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin-bottom:1rem}
+.admin-toolbar select,.admin-toolbar input{width:auto;min-width:180px}
+.content-editor textarea{min-height:260px;font-family:Consolas,monospace;direction:ltr;text-align:left}
+.audit-row{font-size:.85rem}
+.audit-row pre{max-height:160px;overflow:auto;font-size:.75rem}
+.role-select{width:auto}
+.admin-stat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;margin-bottom:1rem}
+.review-actions{display:flex;gap:.4rem;flex-wrap:wrap}

@@ -1,0 +1,482 @@
+[
+  {
+    "id": "g001",
+    "order": 1,
+    "term": "Asset",
+    "arabic": "أصل",
+    "definition": "كيان ذو قيمة مثل بيانات أو جهاز أو خدمة.",
+    "published": true
+  },
+  {
+    "id": "g002",
+    "order": 2,
+    "term": "Threat",
+    "arabic": "تهديد",
+    "definition": "مصدر ضرر محتمل.",
+    "published": true
+  },
+  {
+    "id": "g003",
+    "order": 3,
+    "term": "Vulnerability",
+    "arabic": "ثغرة",
+    "definition": "ضعف يمكن استغلاله.",
+    "published": true
+  },
+  {
+    "id": "g004",
+    "order": 4,
+    "term": "Incident",
+    "arabic": "حادث",
+    "definition": "حدث فعلي يمس السرية أو السلامة أو التوافر.",
+    "published": true
+  },
+  {
+    "id": "g005",
+    "order": 5,
+    "term": "Risk",
+    "arabic": "مخاطرة",
+    "definition": "احتمال الضرر وأثره.",
+    "published": true
+  },
+  {
+    "id": "g006",
+    "order": 6,
+    "term": "Confidentiality",
+    "arabic": "سرية",
+    "definition": "منع الكشف غير المصرح به.",
+    "published": true
+  },
+  {
+    "id": "g007",
+    "order": 7,
+    "term": "Integrity",
+    "arabic": "سلامة",
+    "definition": "منع التعديل غير المصرح به.",
+    "published": true
+  },
+  {
+    "id": "g008",
+    "order": 8,
+    "term": "Availability",
+    "arabic": "توافر",
+    "definition": "إتاحة الخدمة عند الحاجة.",
+    "published": true
+  },
+  {
+    "id": "g009",
+    "order": 9,
+    "term": "Authentication",
+    "arabic": "مصادقة",
+    "definition": "التحقق من الهوية.",
+    "published": true
+  },
+  {
+    "id": "g010",
+    "order": 10,
+    "term": "Authorization",
+    "arabic": "تفويض",
+    "definition": "التحقق من الصلاحية.",
+    "published": true
+  },
+  {
+    "id": "g011",
+    "order": 11,
+    "term": "MFA",
+    "arabic": "مصادقة متعددة العوامل",
+    "definition": "أكثر من عامل لإثبات الهوية.",
+    "published": true
+  },
+  {
+    "id": "g012",
+    "order": 12,
+    "term": "Phishing",
+    "arabic": "تصيد",
+    "definition": "خداع المستخدم عبر رسالة أو موقع منتحل.",
+    "published": true
+  },
+  {
+    "id": "g013",
+    "order": 13,
+    "term": "Social Engineering",
+    "arabic": "هندسة اجتماعية",
+    "definition": "التلاعب بالبشر للحصول على وصول.",
+    "published": true
+  },
+  {
+    "id": "g014",
+    "order": 14,
+    "term": "Least Privilege",
+    "arabic": "أقل صلاحية",
+    "definition": "منح الحد الأدنى اللازم.",
+    "published": true
+  },
+  {
+    "id": "g015",
+    "order": 15,
+    "term": "RBAC",
+    "arabic": "تحكم بالأدوار",
+    "definition": "صلاحيات مرتبطة بأدوار.",
+    "published": true
+  },
+  {
+    "id": "g016",
+    "order": 16,
+    "term": "Process",
+    "arabic": "عملية",
+    "definition": "برنامج قيد التشغيل.",
+    "published": true
+  },
+  {
+    "id": "g017",
+    "order": 17,
+    "term": "PID",
+    "arabic": "معرّف العملية",
+    "definition": "رقم يميز العملية.",
+    "published": true
+  },
+  {
+    "id": "g018",
+    "order": 18,
+    "term": "Kernel",
+    "arabic": "نواة",
+    "definition": "جزء نظام التشغيل الذي يدير الموارد.",
+    "published": true
+  },
+  {
+    "id": "g019",
+    "order": 19,
+    "term": "Log",
+    "arabic": "سجل",
+    "definition": "حدث منظم يصف نشاطاً.",
+    "published": true
+  },
+  {
+    "id": "g020",
+    "order": 20,
+    "term": "Telemetry",
+    "arabic": "قياس عن بعد",
+    "definition": "بيانات عن سلوك النظام.",
+    "published": true
+  },
+  {
+    "id": "g021",
+    "order": 21,
+    "term": "IP Address",
+    "arabic": "عنوان IP",
+    "definition": "عنوان منطقي لواجهة شبكة.",
+    "published": true
+  },
+  {
+    "id": "g022",
+    "order": 22,
+    "term": "Port",
+    "arabic": "منفذ",
+    "definition": "رقم يميز خدمة على جهاز.",
+    "published": true
+  },
+  {
+    "id": "g023",
+    "order": 23,
+    "term": "TCP",
+    "arabic": "بروتوكول تحكم بالإرسال",
+    "definition": "نقل موثوق موجه بالاتصال.",
+    "published": true
+  },
+  {
+    "id": "g024",
+    "order": 24,
+    "term": "UDP",
+    "arabic": "بروتوكول مخطط المستخدم",
+    "definition": "نقل خفيف بلا اتصال موثوق.",
+    "published": true
+  },
+  {
+    "id": "g025",
+    "order": 25,
+    "term": "DNS",
+    "arabic": "نظام أسماء النطاقات",
+    "definition": "يترجم الأسماء إلى سجلات.",
+    "published": true
+  },
+  {
+    "id": "g026",
+    "order": 26,
+    "term": "HTTP",
+    "arabic": "بروتوكول نقل النص التشعبي",
+    "definition": "بروتوكول طلب واستجابة للويب.",
+    "published": true
+  },
+  {
+    "id": "g027",
+    "order": 27,
+    "term": "HTTPS",
+    "arabic": "HTTP الآمن",
+    "definition": "HTTP فوق TLS.",
+    "published": true
+  },
+  {
+    "id": "g028",
+    "order": 28,
+    "term": "TLS",
+    "arabic": "أمن طبقة النقل",
+    "definition": "يحمي النقل ويصادق الخادم.",
+    "published": true
+  },
+  {
+    "id": "g029",
+    "order": 29,
+    "term": "Cookie",
+    "arabic": "ملف تعريف ارتباط",
+    "definition": "قيمة يخزنها المتصفح ويرسلها.",
+    "published": true
+  },
+  {
+    "id": "g030",
+    "order": 30,
+    "term": "Session",
+    "arabic": "جلسة",
+    "definition": "حالة مستخدم على الخادم.",
+    "published": true
+  },
+  {
+    "id": "g031",
+    "order": 31,
+    "term": "Hash",
+    "arabic": "تجزئة",
+    "definition": "بصمة أحادية الاتجاه.",
+    "published": true
+  },
+  {
+    "id": "g032",
+    "order": 32,
+    "term": "Encryption",
+    "arabic": "تشفير",
+    "definition": "تحويل قابل للعكس بمفتاح للسرية.",
+    "published": true
+  },
+  {
+    "id": "g033",
+    "order": 33,
+    "term": "Salt",
+    "arabic": "ملح",
+    "definition": "عشوائية تضاف لكلمة المرور قبل التجزئة.",
+    "published": true
+  },
+  {
+    "id": "g034",
+    "order": 34,
+    "term": "Digital Signature",
+    "arabic": "توقيع رقمي",
+    "definition": "إثبات مصدر وسلامة.",
+    "published": true
+  },
+  {
+    "id": "g035",
+    "order": 35,
+    "term": "Certificate",
+    "arabic": "شهادة",
+    "definition": "تربط مفتاحاً عاماً بهوية.",
+    "published": true
+  },
+  {
+    "id": "g036",
+    "order": 36,
+    "term": "XSS",
+    "arabic": "حقن سكربت عبر المواقع",
+    "definition": "حقن سكربت في صفحة يراها مستخدم.",
+    "published": true
+  },
+  {
+    "id": "g037",
+    "order": 37,
+    "term": "Injection",
+    "arabic": "حقن",
+    "definition": "تفسير مدخل كبيانات تنفيذية.",
+    "published": true
+  },
+  {
+    "id": "g038",
+    "order": 38,
+    "term": "IDOR",
+    "arabic": "وصول مباشر غير آمن",
+    "definition": "وصول لمورد عبر معرّف دون تفويض.",
+    "published": true
+  },
+  {
+    "id": "g039",
+    "order": 39,
+    "term": "CSP",
+    "arabic": "سياسة أمن المحتوى",
+    "definition": "تقيد مصادر السكربتات.",
+    "published": true
+  },
+  {
+    "id": "g040",
+    "order": 40,
+    "term": "Attack Surface",
+    "arabic": "سطح الهجوم",
+    "definition": "نقاط التأثير الخارجي.",
+    "published": true
+  },
+  {
+    "id": "g041",
+    "order": 41,
+    "term": "Baseline",
+    "arabic": "خط أساسي",
+    "definition": "نمط سلوك معتاد مرجعي.",
+    "published": true
+  },
+  {
+    "id": "g042",
+    "order": 42,
+    "term": "Threshold",
+    "arabic": "عتبة",
+    "definition": "قيمة إطلاق إنذار.",
+    "published": true
+  },
+  {
+    "id": "g043",
+    "order": 43,
+    "term": "False Positive",
+    "arabic": "إيجابي كاذب",
+    "definition": "إنذار لنشاط سليم.",
+    "published": true
+  },
+  {
+    "id": "g044",
+    "order": 44,
+    "term": "False Negative",
+    "arabic": "سلبي كاذب",
+    "definition": "عدم إنذار لنشاط ضار.",
+    "published": true
+  },
+  {
+    "id": "g045",
+    "order": 45,
+    "term": "Timeline",
+    "arabic": "خط زمني",
+    "definition": "ترتيب الأحداث زمنياً.",
+    "published": true
+  },
+  {
+    "id": "g046",
+    "order": 46,
+    "term": "Containment",
+    "arabic": "احتواء",
+    "definition": "حد انتشار الضرر.",
+    "published": true
+  },
+  {
+    "id": "g047",
+    "order": 47,
+    "term": "Eradication",
+    "arabic": "استئصال",
+    "definition": "إزالة سبب الحادث.",
+    "published": true
+  },
+  {
+    "id": "g048",
+    "order": 48,
+    "term": "Recovery",
+    "arabic": "تعافٍ",
+    "definition": "إعادة الخدمة بأمان.",
+    "published": true
+  },
+  {
+    "id": "g049",
+    "order": 49,
+    "term": "Chain of Custody",
+    "arabic": "سلسلة الحيازة",
+    "definition": "سجل حيازة الدليل وانتقالاته.",
+    "published": true
+  },
+  {
+    "id": "g050",
+    "order": 50,
+    "term": "Forensic Image",
+    "arabic": "صورة جنائية",
+    "definition": "نسخة بتية من وسيط.",
+    "published": true
+  },
+  {
+    "id": "g051",
+    "order": 51,
+    "term": "Scope",
+    "arabic": "نطاق",
+    "definition": "حدود التفويض والفحص.",
+    "published": true
+  },
+  {
+    "id": "g052",
+    "order": 52,
+    "term": "CVSS",
+    "arabic": "نظام خطورة الثغرات",
+    "definition": "درجة قياسية لخطورة الثغرة.",
+    "published": true
+  },
+  {
+    "id": "g053",
+    "order": 53,
+    "term": "Remediation",
+    "arabic": "معالجة",
+    "definition": "إصلاح أو تقليل أثر الثغرة.",
+    "published": true
+  },
+  {
+    "id": "g054",
+    "order": 54,
+    "term": "Retest",
+    "arabic": "إعادة فحص",
+    "definition": "فحص بعد الإصلاح.",
+    "published": true
+  },
+  {
+    "id": "g055",
+    "order": 55,
+    "term": "Hardening",
+    "arabic": "تقوية",
+    "definition": "تقليل ضعف الإعدادات.",
+    "published": true
+  },
+  {
+    "id": "g056",
+    "order": 56,
+    "term": "SOC",
+    "arabic": "مركز عمليات الأمن",
+    "definition": "فريق يراقب ويحلل ويستجيب.",
+    "published": true
+  },
+  {
+    "id": "g057",
+    "order": 57,
+    "term": "Triage",
+    "arabic": "فرز",
+    "definition": "تحديد أولوية التنبيهات.",
+    "published": true
+  },
+  {
+    "id": "g058",
+    "order": 58,
+    "term": "Playbook",
+    "arabic": "دليل إجراء",
+    "definition": "خطوات تشغيلية للاستجابة.",
+    "published": true
+  },
+  {
+    "id": "g059",
+    "order": 59,
+    "term": "Handover",
+    "arabic": "تسليم نوبة",
+    "definition": "نقل السياق للفريق التالي.",
+    "published": true
+  },
+  {
+    "id": "g060",
+    "order": 60,
+    "term": "Audit Log",
+    "arabic": "سجل تدقيق",
+    "definition": "سجل إجراءات حساسة للمراجعة.",
+    "published": true
+  }
+]

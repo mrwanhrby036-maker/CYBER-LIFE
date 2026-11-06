@@ -1,0 +1,56 @@
+{
+  "$schema_note": "Firebase Realtime Database structure. All client writes are denied; the FastAPI backend uses Admin SDK/REST with service-account credentials and bypasses rules. Stable IDs are used; per-user nodes avoid whole-database reads.",
+  "users": {
+    "$uid": {
+      "uid": "string",
+      "email": "string",
+      "display_name": "string",
+      "school": "string",
+      "governorate": "string",
+      "role": "student|admin (display only; authoritative role in admin_roles/bootstrap)",
+      "active": "boolean",
+      "email_verified": "boolean",
+      "team_id": "string|null",
+      "created_at": "ISO-8601",
+      "last_login_at": "ISO-8601",
+      "recent_activity": ["bounded last 20 events"]
+    }
+  },
+  "admin_roles": { "$uid": "boolean" },
+  "team_names": { "$normalized_name": { "team_id": "string", "owner_uid": "string", "created_at": "ISO-8601" } },
+  "teams": {
+    "$team_id": {
+      "id": "string",
+      "name": "string (immutable after creation)",
+      "owner_uid": "string",
+      "member_uids": ["uid"],
+      "virtual_member_ids": ["tm_researcher", "tm_log_analyst", "tm_risk_docs"],
+      "contributions": ["bounded mission contribution records"],
+      "mission_history": ["mission ids"],
+      "created_at": "ISO-8601"
+    }
+  },
+  "enrollments": { "$uid": { "$chapter_id": { "uid": "string", "chapter_id": "string", "course_id": "cyber-life-core", "status": "active", "enrolled_at": "ISO-8601" } } },
+  "curriculum": {
+    "chapters": { "$chapter_id": { "id": "string", "order": "1..15", "title": "string", "description": "string", "lesson_ids": ["lesson_id"], "assessment_id": "string", "published": "boolean" } },
+    "lessons": { "$lesson_id": { "id": "string", "chapter_id": "string", "title": "string", "objectives": [], "sections": [], "terminology": [], "examples": [], "command_explanations": [], "exercise": "public question without answer", "assessment_id": "string", "published": "boolean" } },
+    "assessments": { "$assessment_id": { "id": "string", "kind": "lesson|chapter", "chapter_id": "string", "lesson_id": "string?", "questions": "public questions without answer keys", "passing_score": "number" } },
+    "missions": { "$mission_id": { "id": "string", "identifier": "string", "chapter_id": "string", "priority": "low|medium|high", "evidence": [], "teammate_comments": [], "investigation_questions": "public", "answer_key": "server-only via backend; not exposed by API", "evaluation": "rubrics", "published": "boolean" } },
+    "laboratory": { "$scenario_id": { "id": "string", "filesystem": "synthetic files", "exercises": "server-side validation keys", "published": "boolean" } },
+    "glossary": { "$term_id": { "term": "string", "arabic": "string", "definition": "string" } },
+    "teammates": { "$teammate_id": { "name": "string", "role": "string", "profile": "string", "communication_style": "string", "responsibility": "string" } }
+  },
+  "assessment_keys": {
+    "lessons": { "$lesson_id": { "exercise": "answer key", "assessment": "answer key" } },
+    "chapters": { "$chapter_id": "answer key" }
+  },
+  "progress": { "$uid": { "lessons": { "$lesson_id": { "status": "completed", "assessment_score": "number", "exercise_score": "number", "attempt_id": "string", "completed_at": "ISO-8601" } } } },
+  "assessments": { "$uid": { "$attempt_id": { "assessment_id": "string", "percentage": "number", "passed": "boolean", "results": [], "created_at": "ISO-8601" } } },
+  "mission_submissions": { "$uid": { "$mission_id": { "state": "new|assigned|investigating|evidence_collected|under_review|resolved|closed", "team_id": "string", "collected_evidence": [], "decisions": [], "findings": "object|null", "report_id": "string|null", "score": "number|null", "history": [] } } },
+  "lab_sessions": { "$uid": { "$scenario_id": { "cwd": "string", "history": ["bounded last 100 commands"], "completed_exercises": [] } } },
+  "reports": { "$uid": { "$report_id": { "title": "string", "summary": "string", "evidence": "string", "analysis": "string", "actions": "string", "mission_id": "string|null", "evaluation": "deterministic rubric result", "review": { "status": "pending|approved|needs_revision", "comment": "string", "reviewer_uid": "string|null" } } } },
+  "achievements": { "$uid": { "$achievement_id": { "id": "string", "title": "string", "awarded_at": "ISO-8601" } } },
+  "activity": { "$uid": { "$event_id": { "kind": "string", "title": "string", "target": "string", "score": "number|null", "created_at": "ISO-8601" } } },
+  "audit_logs": { "$entry_id": { "actor_uid": "string", "action": "string", "target": "string", "before": "object|null", "after": "object|null", "request_id": "string", "created_at": "ISO-8601" } },
+  "platform_settings": { "schema_version": "number", "content_version": "string", "seeded_at": "ISO-8601" }
+}

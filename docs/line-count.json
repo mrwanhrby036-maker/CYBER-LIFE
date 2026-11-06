@@ -1,0 +1,1014 @@
+{
+  "totals": {
+    "total": 22525,
+    "code": 21391,
+    "blank": 976,
+    "comment": 158
+  },
+  "by_top": {
+    "README_AR.md": {
+      "files": 1,
+      "total": 58,
+      "code": 33
+    },
+    "backend": {
+      "files": 45,
+      "total": 3529,
+      "code": 2961
+    },
+    "content": {
+      "files": 19,
+      "total": 14267,
+      "code": 14267
+    },
+    "database": {
+      "files": 3,
+      "total": 212,
+      "code": 194
+    },
+    "docs": {
+      "files": 13,
+      "total": 2284,
+      "code": 1892
+    },
+    "firebase.json": {
+      "files": 1,
+      "total": 5,
+      "code": 5
+    },
+    "frontend": {
+      "files": 45,
+      "total": 1690,
+      "code": 1619
+    },
+    "scripts": {
+      "files": 5,
+      "total": 265,
+      "code": 225
+    },
+    "tests-frontend": {
+      "files": 3,
+      "total": 190,
+      "code": 170
+    },
+    "vercel.json": {
+      "files": 1,
+      "total": 25,
+      "code": 25
+    }
+  },
+  "files": [
+    {
+      "path": "README_AR.md",
+      "total": 58,
+      "code": 33,
+      "blank": 18,
+      "comment": 7
+    },
+    {
+      "path": "backend/.env.example",
+      "total": 33,
+      "code": 30,
+      "blank": 3,
+      "comment": 0
+    },
+    {
+      "path": "backend/app/__init__.py",
+      "total": 0,
+      "code": 0,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "backend/app/config.py",
+      "total": 97,
+      "code": 85,
+      "blank": 12,
+      "comment": 0
+    },
+    {
+      "path": "backend/app/db_base.py",
+      "total": 31,
+      "code": 22,
+      "blank": 9,
+      "comment": 0
+    },
+    {
+      "path": "backend/app/db_firebase.py",
+      "total": 136,
+      "code": 120,
+      "blank": 15,
+      "comment": 1
+    },
+    {
+      "path": "backend/app/db_local.py",
+      "total": 144,
+      "code": 127,
+      "blank": 17,
+      "comment": 0
+    },
+    {
+      "path": "backend/app/dependencies.py",
+      "total": 50,
+      "code": 39,
+      "blank": 11,
+      "comment": 0
+    },
+    {
+      "path": "backend/app/errors.py",
+      "total": 52,
+      "code": 35,
+      "blank": 17,
+      "comment": 0
+    },
+    {
+      "path": "backend/app/helpers.py",
+      "total": 58,
+      "code": 39,
+      "blank": 19,
+      "comment": 0
+    },
+    {
+      "path": "backend/app/logging_setup.py",
+      "total": 47,
+      "code": 38,
+      "blank": 9,
+      "comment": 0
+    },
+    {
+      "path": "backend/app/main.py",
+      "total": 103,
+      "code": 91,
+      "blank": 12,
+      "comment": 0
+    },
+    {
+      "path": "backend/app/middleware.py",
+      "total": 76,
+      "code": 64,
+      "blank": 11,
+      "comment": 1
+    },
+    {
+      "path": "backend/app/route_achievements.py",
+      "total": 11,
+      "code": 8,
+      "blank": 3,
+      "comment": 0
+    },
+    {
+      "path": "backend/app/route_admin.py",
+      "total": 118,
+      "code": 89,
+      "blank": 29,
+      "comment": 0
+    },
+    {
+      "path": "backend/app/route_auth.py",
+      "total": 39,
+      "code": 28,
+      "blank": 9,
+      "comment": 2
+    },
+    {
+      "path": "backend/app/route_curriculum.py",
+      "total": 49,
+      "code": 32,
+      "blank": 17,
+      "comment": 0
+    },
+    {
+      "path": "backend/app/route_health.py",
+      "total": 16,
+      "code": 11,
+      "blank": 5,
+      "comment": 0
+    },
+    {
+      "path": "backend/app/route_laboratory.py",
+      "total": 34,
+      "code": 23,
+      "blank": 11,
+      "comment": 0
+    },
+    {
+      "path": "backend/app/route_missions.py",
+      "total": 65,
+      "code": 42,
+      "blank": 23,
+      "comment": 0
+    },
+    {
+      "path": "backend/app/route_progress.py",
+      "total": 42,
+      "code": 27,
+      "blank": 15,
+      "comment": 0
+    },
+    {
+      "path": "backend/app/route_reports.py",
+      "total": 25,
+      "code": 16,
+      "blank": 9,
+      "comment": 0
+    },
+    {
+      "path": "backend/app/route_teams.py",
+      "total": 26,
+      "code": 17,
+      "blank": 9,
+      "comment": 0
+    },
+    {
+      "path": "backend/app/schemas.py",
+      "total": 93,
+      "code": 60,
+      "blank": 33,
+      "comment": 0
+    },
+    {
+      "path": "backend/app/service_achievements.py",
+      "total": 60,
+      "code": 54,
+      "blank": 6,
+      "comment": 0
+    },
+    {
+      "path": "backend/app/service_activity.py",
+      "total": 16,
+      "code": 13,
+      "blank": 3,
+      "comment": 0
+    },
+    {
+      "path": "backend/app/service_analytics.py",
+      "total": 53,
+      "code": 49,
+      "blank": 4,
+      "comment": 0
+    },
+    {
+      "path": "backend/app/service_audit.py",
+      "total": 22,
+      "code": 18,
+      "blank": 4,
+      "comment": 0
+    },
+    {
+      "path": "backend/app/service_content.py",
+      "total": 362,
+      "code": 329,
+      "blank": 31,
+      "comment": 2
+    },
+    {
+      "path": "backend/app/service_laboratory.py",
+      "total": 365,
+      "code": 351,
+      "blank": 14,
+      "comment": 0
+    },
+    {
+      "path": "backend/app/service_missions.py",
+      "total": 196,
+      "code": 179,
+      "blank": 16,
+      "comment": 1
+    },
+    {
+      "path": "backend/app/service_progress.py",
+      "total": 119,
+      "code": 110,
+      "blank": 8,
+      "comment": 1
+    },
+    {
+      "path": "backend/app/service_reports.py",
+      "total": 97,
+      "code": 88,
+      "blank": 9,
+      "comment": 0
+    },
+    {
+      "path": "backend/app/service_scoring.py",
+      "total": 103,
+      "code": 95,
+      "blank": 7,
+      "comment": 1
+    },
+    {
+      "path": "backend/app/service_teams.py",
+      "total": 69,
+      "code": 62,
+      "blank": 6,
+      "comment": 1
+    },
+    {
+      "path": "backend/app/service_users.py",
+      "total": 103,
+      "code": 90,
+      "blank": 11,
+      "comment": 2
+    },
+    {
+      "path": "backend/app/tokens.py",
+      "total": 112,
+      "code": 94,
+      "blank": 18,
+      "comment": 0
+    },
+    {
+      "path": "backend/requirements.txt",
+      "total": 10,
+      "code": 10,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "backend/tests/__init__.py",
+      "total": 0,
+      "code": 0,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "backend/tests/conftest.py",
+      "total": 87,
+      "code": 65,
+      "blank": 22,
+      "comment": 0
+    },
+    {
+      "path": "backend/tests/test_admin_security.py",
+      "total": 61,
+      "code": 44,
+      "blank": 16,
+      "comment": 1
+    },
+    {
+      "path": "backend/tests/test_curriculum.py",
+      "total": 52,
+      "code": 38,
+      "blank": 14,
+      "comment": 0
+    },
+    {
+      "path": "backend/tests/test_health_auth.py",
+      "total": 54,
+      "code": 36,
+      "blank": 18,
+      "comment": 0
+    },
+    {
+      "path": "backend/tests/test_laboratory_missions_reports.py",
+      "total": 103,
+      "code": 84,
+      "blank": 19,
+      "comment": 0
+    },
+    {
+      "path": "backend/tests/test_scoring_rules_config.py",
+      "total": 73,
+      "code": 56,
+      "blank": 17,
+      "comment": 0
+    },
+    {
+      "path": "backend/tests/test_teams_progress.py",
+      "total": 67,
+      "code": 53,
+      "blank": 14,
+      "comment": 0
+    },
+    {
+      "path": "content/chapter-01.json",
+      "total": 671,
+      "code": 671,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "content/chapter-02.json",
+      "total": 650,
+      "code": 650,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "content/chapter-03.json",
+      "total": 655,
+      "code": 655,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "content/chapter-04.json",
+      "total": 756,
+      "code": 756,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "content/chapter-05.json",
+      "total": 680,
+      "code": 680,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "content/chapter-06.json",
+      "total": 684,
+      "code": 684,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "content/chapter-07.json",
+      "total": 650,
+      "code": 650,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "content/chapter-08.json",
+      "total": 670,
+      "code": 670,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "content/chapter-09.json",
+      "total": 649,
+      "code": 649,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "content/chapter-10.json",
+      "total": 707,
+      "code": 707,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "content/chapter-11.json",
+      "total": 686,
+      "code": 686,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "content/chapter-12.json",
+      "total": 675,
+      "code": 675,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "content/chapter-13.json",
+      "total": 681,
+      "code": 681,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "content/chapter-14.json",
+      "total": 702,
+      "code": 702,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "content/chapter-15.json",
+      "total": 712,
+      "code": 712,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "content/glossary.json",
+      "total": 482,
+      "code": 482,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "content/laboratory.json",
+      "total": 508,
+      "code": 508,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "content/missions.json",
+      "total": 3017,
+      "code": 3017,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "content/teammates.json",
+      "total": 32,
+      "code": 32,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "database/DATABASE_DOCUMENTATION.md",
+      "total": 46,
+      "code": 28,
+      "blank": 12,
+      "comment": 6
+    },
+    {
+      "path": "database/database.rules.json",
+      "total": 110,
+      "code": 110,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "database/realtime_database_structure.json",
+      "total": 56,
+      "code": 56,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "docs/API.md",
+      "total": 112,
+      "code": 80,
+      "blank": 22,
+      "comment": 10
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "total": 74,
+      "code": 51,
+      "blank": 16,
+      "comment": 7
+    },
+    {
+      "path": "docs/DEPLOYMENT.md",
+      "total": 90,
+      "code": 58,
+      "blank": 23,
+      "comment": 9
+    },
+    {
+      "path": "docs/FILE_MAP.md",
+      "total": 224,
+      "code": 164,
+      "blank": 43,
+      "comment": 17
+    },
+    {
+      "path": "docs/FIREBASE_SETUP.md",
+      "total": 150,
+      "code": 96,
+      "blank": 42,
+      "comment": 12
+    },
+    {
+      "path": "docs/FIREBASE_VERIFIED.md",
+      "total": 114,
+      "code": 71,
+      "blank": 35,
+      "comment": 8
+    },
+    {
+      "path": "docs/GITHUB_AND_VERCEL.md",
+      "total": 151,
+      "code": 88,
+      "blank": 48,
+      "comment": 15
+    },
+    {
+      "path": "docs/IMPLEMENTATION_STATUS.md",
+      "total": 58,
+      "code": 36,
+      "blank": 15,
+      "comment": 7
+    },
+    {
+      "path": "docs/LINE_COUNT_REPORT.md",
+      "total": 162,
+      "code": 153,
+      "blank": 6,
+      "comment": 3
+    },
+    {
+      "path": "docs/SECURITY.md",
+      "total": 40,
+      "code": 21,
+      "blank": 12,
+      "comment": 7
+    },
+    {
+      "path": "docs/TESTING.md",
+      "total": 45,
+      "code": 28,
+      "blank": 11,
+      "comment": 6
+    },
+    {
+      "path": "docs/TEST_REPORT.md",
+      "total": 64,
+      "code": 46,
+      "blank": 12,
+      "comment": 6
+    },
+    {
+      "path": "docs/line-count.json",
+      "total": 1000,
+      "code": 1000,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "firebase.json",
+      "total": 5,
+      "code": 5,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "frontend/achievements.html",
+      "total": 22,
+      "code": 22,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "frontend/admin.html",
+      "total": 22,
+      "code": 22,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "frontend/assets/favicon.svg",
+      "total": 1,
+      "code": 1,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "frontend/assets/logo.svg",
+      "total": 1,
+      "code": 1,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "frontend/config.js",
+      "total": 5,
+      "code": 1,
+      "blank": 0,
+      "comment": 4
+    },
+    {
+      "path": "frontend/css/admin.css",
+      "total": 9,
+      "code": 9,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "frontend/css/base.css",
+      "total": 47,
+      "code": 46,
+      "blank": 0,
+      "comment": 1
+    },
+    {
+      "path": "frontend/css/components.css",
+      "total": 43,
+      "code": 43,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "frontend/css/dashboard.css",
+      "total": 12,
+      "code": 12,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "frontend/css/laboratory.css",
+      "total": 16,
+      "code": 16,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "frontend/css/landing.css",
+      "total": 41,
+      "code": 41,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "frontend/css/layout.css",
+      "total": 23,
+      "code": 23,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "frontend/css/lessons.css",
+      "total": 18,
+      "code": 18,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "frontend/css/responsive.css",
+      "total": 25,
+      "code": 25,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "frontend/curriculum.html",
+      "total": 22,
+      "code": 22,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "frontend/dashboard.html",
+      "total": 22,
+      "code": 22,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "frontend/index.html",
+      "total": 125,
+      "code": 118,
+      "blank": 7,
+      "comment": 0
+    },
+    {
+      "path": "frontend/js/api-client.js",
+      "total": 39,
+      "code": 37,
+      "blank": 2,
+      "comment": 0
+    },
+    {
+      "path": "frontend/js/auth-firebase-config.js",
+      "total": 19,
+      "code": 13,
+      "blank": 1,
+      "comment": 5
+    },
+    {
+      "path": "frontend/js/auth.js",
+      "total": 91,
+      "code": 79,
+      "blank": 11,
+      "comment": 1
+    },
+    {
+      "path": "frontend/js/core-config.js",
+      "total": 6,
+      "code": 5,
+      "blank": 0,
+      "comment": 1
+    },
+    {
+      "path": "frontend/js/core-dom.js",
+      "total": 27,
+      "code": 27,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "frontend/js/core-forms.js",
+      "total": 32,
+      "code": 32,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "frontend/js/core-icons.js",
+      "total": 24,
+      "code": 24,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "frontend/js/core-layout.js",
+      "total": 54,
+      "code": 51,
+      "blank": 3,
+      "comment": 0
+    },
+    {
+      "path": "frontend/js/core-toast.js",
+      "total": 12,
+      "code": 12,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "frontend/js/page-achievements.js",
+      "total": 16,
+      "code": 15,
+      "blank": 1,
+      "comment": 0
+    },
+    {
+      "path": "frontend/js/page-admin.js",
+      "total": 113,
+      "code": 111,
+      "blank": 2,
+      "comment": 0
+    },
+    {
+      "path": "frontend/js/page-curriculum.js",
+      "total": 44,
+      "code": 43,
+      "blank": 1,
+      "comment": 0
+    },
+    {
+      "path": "frontend/js/page-dashboard.js",
+      "total": 59,
+      "code": 58,
+      "blank": 1,
+      "comment": 0
+    },
+    {
+      "path": "frontend/js/page-laboratory.js",
+      "total": 82,
+      "code": 80,
+      "blank": 2,
+      "comment": 0
+    },
+    {
+      "path": "frontend/js/page-landing.js",
+      "total": 11,
+      "code": 10,
+      "blank": 1,
+      "comment": 0
+    },
+    {
+      "path": "frontend/js/page-lessons.js",
+      "total": 117,
+      "code": 111,
+      "blank": 6,
+      "comment": 0
+    },
+    {
+      "path": "frontend/js/page-login.js",
+      "total": 122,
+      "code": 110,
+      "blank": 9,
+      "comment": 3
+    },
+    {
+      "path": "frontend/js/page-missions.js",
+      "total": 103,
+      "code": 97,
+      "blank": 6,
+      "comment": 0
+    },
+    {
+      "path": "frontend/js/page-profile.js",
+      "total": 36,
+      "code": 35,
+      "blank": 1,
+      "comment": 0
+    },
+    {
+      "path": "frontend/js/page-reports.js",
+      "total": 40,
+      "code": 39,
+      "blank": 1,
+      "comment": 0
+    },
+    {
+      "path": "frontend/js/page-team.js",
+      "total": 35,
+      "code": 34,
+      "blank": 1,
+      "comment": 0
+    },
+    {
+      "path": "frontend/laboratory.html",
+      "total": 22,
+      "code": 22,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "frontend/lessons.html",
+      "total": 22,
+      "code": 22,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "frontend/login.html",
+      "total": 22,
+      "code": 22,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "frontend/missions.html",
+      "total": 22,
+      "code": 22,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "frontend/profile.html",
+      "total": 22,
+      "code": 22,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "frontend/reports.html",
+      "total": 22,
+      "code": 22,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "frontend/team.html",
+      "total": 22,
+      "code": 22,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "scripts/count_lines.py",
+      "total": 89,
+      "code": 81,
+      "blank": 7,
+      "comment": 1
+    },
+    {
+      "path": "scripts/make_transparent.py",
+      "total": 91,
+      "code": 67,
+      "blank": 17,
+      "comment": 7
+    },
+    {
+      "path": "scripts/push_to_github.sh",
+      "total": 26,
+      "code": 23,
+      "blank": 3,
+      "comment": 0
+    },
+    {
+      "path": "scripts/run_tests.sh",
+      "total": 11,
+      "code": 11,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "scripts/serve_preview.sh",
+      "total": 48,
+      "code": 43,
+      "blank": 5,
+      "comment": 0
+    },
+    {
+      "path": "tests-frontend/core.test.js",
+      "total": 106,
+      "code": 96,
+      "blank": 10,
+      "comment": 0
+    },
+    {
+      "path": "tests-frontend/package.json",
+      "total": 7,
+      "code": 7,
+      "blank": 0,
+      "comment": 0
+    },
+    {
+      "path": "tests-frontend/security-ui.test.js",
+      "total": 77,
+      "code": 67,
+      "blank": 8,
+      "comment": 2
+    },
+    {
+      "path": "vercel.json",
+      "total": 25,
+      "code": 25,
+      "blank": 0,
+      "comment": 0
+    }
+  ]
+}

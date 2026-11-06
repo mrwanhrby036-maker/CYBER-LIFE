@@ -1,0 +1,38 @@
+# Secrets and local state
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+service-account*.json
+firebase-credentials*.json
+backend/.data/
+.data/
+local-signing-key
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Node
+node_modules/
+npm-debug.log*
+package-lock.json
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Build
+dist/
+build/
+.vercel/

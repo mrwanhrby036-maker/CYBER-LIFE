@@ -1,0 +1,508 @@
+[
+  {
+    "id": "lab01",
+    "order": 1,
+    "title": "أساسيات الطرفية",
+    "description": "تنقل وقراءة ملفات اصطناعية.",
+    "difficulty": "beginner",
+    "start_dir": "/home/analyst",
+    "user": "analyst",
+    "hostname": "soc-workstation",
+    "objectives": [
+      "استخدام pwd وls وcat",
+      "قراءة ملف ملاحظات"
+    ],
+    "filesystem": {
+      "/home/analyst/readme.txt": {
+        "type": "file",
+        "content": "مرحباً بك في مختبر CYBER LIFE.\n this ملف اصطناعي.",
+        "file_type": "ASCII text"
+      },
+      "/home/analyst/logs/auth.log": {
+        "type": "file",
+        "content": "Failed password for student01 from 10.10.20.9\nAccepted password for student01 from 10.10.20.4",
+        "file_type": "ASCII text"
+      },
+      "/home/analyst/.env.example": {
+        "type": "file",
+        "content": "MODE=training\nNO_REAL_SECRETS=1",
+        "file_type": "ASCII text"
+      }
+    },
+    "exercises": [
+      {
+        "id": "lab01_ex1",
+        "title": "استكشف الدليل",
+        "instructions": [
+          "شغّل pwd",
+          "شغّل ls -la",
+          "اقرأ readme.txt"
+        ],
+        "hints": [
+          "استخدم cat readme.txt"
+        ],
+        "required_commands": [
+          "^pwd",
+          "^ls",
+          "^cat\\s+readme.txt"
+        ],
+        "questions": [
+          {
+            "id": "q1",
+            "type": "short",
+            "prompt": "ما الأمر الذي يطبع دليل العمل؟",
+            "answer": "pwd",
+            "accepted": [
+              "pwd"
+            ],
+            "explanation": "pwd.",
+            "points": 1
+          }
+        ],
+        "passing_score": 70
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "lab02",
+    "order": 2,
+    "title": "تحليل سجل دخول",
+    "description": "ترشيح محاولات فاشلة وعدّها.",
+    "difficulty": "beginner",
+    "start_dir": "/home/analyst/logs",
+    "user": "analyst",
+    "hostname": "soc-workstation",
+    "objectives": [
+      "استخدام grep وwc",
+      "تفسير العد"
+    ],
+    "filesystem": {
+      "/home/analyst/logs/auth.log": {
+        "type": "file",
+        "content": "Failed password for student01 from 10.10.20.9\nFailed password for student01 from 10.10.20.9\nFailed password for student02 from 10.10.20.9\nAccepted password for student01 from 10.10.20.4\nFailed password for student01 from 10.10.20.8",
+        "file_type": "ASCII text"
+      },
+      "/home/analyst/logs/readme.txt": {
+        "type": "file",
+        "content": "سجل اصطناعي للتدريب.",
+        "file_type": "ASCII text"
+      }
+    },
+    "exercises": [
+      {
+        "id": "lab02_ex1",
+        "title": "رشح الفشل",
+        "instructions": [
+          "اعرض أول أسطر auth.log",
+          "رشح Failed",
+          "عدّ الأسطر المطابقة"
+        ],
+        "hints": [
+          "grep -c Failed auth.log"
+        ],
+        "required_commands": [
+          "^head",
+          "grep.*Failed",
+          "wc.*-l|grep.*-c"
+        ],
+        "questions": [
+          {
+            "id": "q1",
+            "type": "short",
+            "prompt": "كم محاولة فاشلة في السجل؟",
+            "answer": "4",
+            "accepted": [
+              "4",
+              "أربع",
+              "اربعة"
+            ],
+            "explanation": "أربعة أسطر Failed.",
+            "points": 1
+          },
+          {
+            "id": "q2",
+            "type": "mcq",
+            "prompt": "العد وحده يثبت:",
+            "options": [
+              {
+                "id": "a",
+                "text": "اختراق"
+              },
+              {
+                "id": "b",
+                "text": "عدد أسطر مطابقة"
+              },
+              {
+                "id": "c",
+                "text": "هوية المهاجم"
+              }
+            ],
+            "answer": "b",
+            "explanation": "العد مقياس أولي.",
+            "points": 1
+          }
+        ],
+        "passing_score": 70
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "lab03",
+    "order": 3,
+    "title": "سجل ويب",
+    "description": "قراءة طلبات وأكواد حالة.",
+    "difficulty": "intermediate",
+    "start_dir": "/var/log/training",
+    "user": "analyst",
+    "hostname": "web-lab",
+    "objectives": [
+      "ترشيح 404",
+      "قراءة المسارات"
+    ],
+    "filesystem": {
+      "/var/log/training/access.log": {
+        "type": "file",
+        "content": "10.10.20.9 GET /admin 404\n10.10.20.9 GET /backup 404\n10.10.20.9 GET /config 404\n10.10.20.4 GET / 200\n10.10.20.4 GET /lessons 200",
+        "file_type": "ASCII text"
+      },
+      "/var/log/training/app.log": {
+        "type": "file",
+        "content": "auth failed user=student01\nauth success user=student01",
+        "file_type": "ASCII text"
+      }
+    },
+    "exercises": [
+      {
+        "id": "lab03_ex1",
+        "title": "استكشاف 404",
+        "instructions": [
+          "رشح 404",
+          "عدّ الطلبات المشبوهة"
+        ],
+        "hints": [
+          "grep 404 access.log"
+        ],
+        "required_commands": [
+          "grep.*404"
+        ],
+        "questions": [
+          {
+            "id": "q1",
+            "type": "short",
+            "prompt": "كم طلب 404؟",
+            "answer": "3",
+            "accepted": [
+              "3",
+              "ثلاثة"
+            ],
+            "explanation": "ثلاثة.",
+            "points": 1
+          },
+          {
+            "id": "q2",
+            "type": "mcq",
+            "prompt": "النمط يشير مبدئياً إلى:",
+            "options": [
+              {
+                "id": "a",
+                "text": "استكشاف مسارات"
+              },
+              {
+                "id": "b",
+                "text": "نجاح دخول"
+              },
+              {
+                "id": "c",
+                "text": "تحديث نظام"
+              }
+            ],
+            "answer": "a",
+            "explanation": "404 متكررة لمسارات حساسة.",
+            "points": 1
+          }
+        ],
+        "passing_score": 70
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "lab04",
+    "order": 4,
+    "title": "ملفات وصلاحيات",
+    "description": "فحص ملف إعداد مخفي وصلاحياته.",
+    "difficulty": "intermediate",
+    "start_dir": "/home/analyst/app",
+    "user": "analyst",
+    "hostname": "app-lab",
+    "objectives": [
+      "كشف ملف مخفي",
+      "قراءة stat"
+    ],
+    "filesystem": {
+      "/home/analyst/app/.env": {
+        "type": "file",
+        "content": "MODE=training\nSECRET=training-only-not-real",
+        "file_type": "ASCII text"
+      },
+      "/home/analyst/app/config.ini": {
+        "type": "file",
+        "content": "[service]\nport=8443",
+        "file_type": "ASCII text"
+      },
+      "/home/analyst/app/service.py": {
+        "type": "file",
+        "content": "print('training service')",
+        "file_type": "ASCII text"
+      }
+    },
+    "exercises": [
+      {
+        "id": "lab04_ex1",
+        "title": "افحص الإعداد",
+        "instructions": [
+          "اعرض المخفي",
+          "اقرأ .env",
+          "اعرض stat"
+        ],
+        "hints": [
+          "ls -la",
+          "stat .env"
+        ],
+        "required_commands": [
+          "^ls.*-a",
+          "^cat.*\\.env",
+          "^stat"
+        ],
+        "questions": [
+          {
+            "id": "q1",
+            "type": "mcq",
+            "prompt": "ملف .env يحتوي سراً تدريبياً. الخطر الأساسي إذا كان مقروءاً للجميع:",
+            "options": [
+              {
+                "id": "a",
+                "text": "سرية"
+              },
+              {
+                "id": "b",
+                "text": "توافر فقط"
+              },
+              {
+                "id": "c",
+                "text": "لا خطر"
+              }
+            ],
+            "answer": "a",
+            "explanation": "كشف سر.",
+            "points": 1
+          }
+        ],
+        "passing_score": 70
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "lab05",
+    "order": 5,
+    "title": "شبكة وعمليات",
+    "description": "قراءة عمليات واتصالات اصطناعية.",
+    "difficulty": "intermediate",
+    "start_dir": "/home/analyst",
+    "user": "analyst",
+    "hostname": "soc-workstation",
+    "objectives": [
+      "قراءة ps وnetstat وip",
+      "ربط pid بالاتصال"
+    ],
+    "network": "1: lo: <LOOPBACK> inet 127.0.0.1/8\n2: eth0: <UP> inet 10.10.20.15/24",
+    "processes": "PID USER COMMAND\n412 analyst /tmp/.cache/update\n118 analyst python3 training_agent.py",
+    "connections": "Proto Local Foreign State PID\nTCP 10.10.20.15:49152 10.10.30.7:443 ESTABLISHED 412",
+    "filesystem": {
+      "/home/analyst/notes.txt": {
+        "type": "file",
+        "content": "اربط PID بالعملية والاتصال.",
+        "file_type": "ASCII text"
+      },
+      "/tmp/.cache/update": {
+        "type": "file",
+        "content": "ملف اصطناعي يمثل خدمة تدريب.",
+        "file_type": "ASCII text"
+      }
+    },
+    "exercises": [
+      {
+        "id": "lab05_ex1",
+        "title": "اربط الدليل",
+        "instructions": [
+          "اعرض العمليات",
+          "اعرض الاتصالات",
+          "حدد PID المشترك"
+        ],
+        "hints": [
+          "ps",
+          "netstat"
+        ],
+        "required_commands": [
+          "^ps",
+          "^netstat"
+        ],
+        "questions": [
+          {
+            "id": "q1",
+            "type": "short",
+            "prompt": "ما PID العملية المتصلة؟",
+            "answer": "412",
+            "accepted": [
+              "412"
+            ],
+            "explanation": "412.",
+            "points": 1
+          },
+          {
+            "id": "q2",
+            "type": "mcq",
+            "prompt": "اسم update وحده:",
+            "options": [
+              {
+                "id": "a",
+                "text": "يثبت الشرعية"
+              },
+              {
+                "id": "b",
+                "text": "لا يكفي للحكم"
+              },
+              {
+                "id": "c",
+                "text": "يثبت الاختراق"
+              }
+            ],
+            "answer": "b",
+            "explanation": "نحتاج السياق.",
+            "points": 1
+          }
+        ],
+        "passing_score": 70
+      }
+    ],
+    "published": true
+  },
+  {
+    "id": "lab06",
+    "order": 6,
+    "title": "خط زمني لحادث",
+    "description": "دمج سجلات وبناء تسلسل.",
+    "difficulty": "advanced",
+    "start_dir": "/cases/incident-01",
+    "user": "analyst",
+    "hostname": "soc-workstation",
+    "objectives": [
+      "قراءة عدة سجلات",
+      "بناء خط زمني",
+      "ذكر حدود"
+    ],
+    "filesystem": {
+      "/cases/incident-01/auth.log": {
+        "type": "file",
+        "content": "08:00 failed student01 10.10.20.9\n08:02 success student01 10.10.20.77",
+        "file_type": "ASCII text"
+      },
+      "/cases/incident-01/web.log": {
+        "type": "file",
+        "content": "08:03 GET /grades 200 10.10.20.77",
+        "file_type": "ASCII text"
+      },
+      "/cases/incident-01/file.log": {
+        "type": "file",
+        "content": "08:05 modified /tmp/.cache/update",
+        "file_type": "ASCII text"
+      },
+      "/cases/incident-01/flow.log": {
+        "type": "file",
+        "content": "08:06 connect 10.10.30.7:443 interval=60s",
+        "file_type": "ASCII text"
+      },
+      "/cases/incident-01/scope.txt": {
+        "type": "file",
+        "content": "تفويض تدريب فقط. كل البيانات اصطناعية.",
+        "file_type": "ASCII text"
+      }
+    },
+    "exercises": [
+      {
+        "id": "lab06_ex1",
+        "title": "ابنِ القصة",
+        "instructions": [
+          "اقرأ السجلات الأربعة",
+          "رتب الأحداث",
+          "اذكر حداً واحداً"
+        ],
+        "hints": [
+          "cat auth.log web.log",
+          "لا تقفز إلى اتهام"
+        ],
+        "required_commands": [
+          "^cat"
+        ],
+        "questions": [
+          {
+            "id": "q1",
+            "type": "report",
+            "prompt": "اكتب ملخصاً زمنياً مع حدود.",
+            "answer": "rubric",
+            "pass_ratio": 0.7,
+            "rubric": [
+              {
+                "id": "time",
+                "label": "ترتيب زمني",
+                "weight": 1,
+                "any_of": [
+                  [
+                    "08:",
+                    "زمن",
+                    "ترتيب",
+                    "خط"
+                  ]
+                ]
+              },
+              {
+                "id": "evidence",
+                "label": "دليل",
+                "weight": 1,
+                "any_of": [
+                  [
+                    "سجل",
+                    "دليل",
+                    "ملف",
+                    "اتصال"
+                  ]
+                ]
+              },
+              {
+                "id": "limit",
+                "label": "حدود",
+                "weight": 1,
+                "any_of": [
+                  [
+                    "لا يثبت",
+                    "حدود",
+                    "غير مؤكد",
+                    "اصطناعي",
+                    "فرضية"
+                  ]
+                ]
+              }
+            ],
+            "explanation": "صف ولا تتهم.",
+            "points": 3
+          }
+        ],
+        "passing_score": 70
+      }
+    ],
+    "published": true
+  }
+]
