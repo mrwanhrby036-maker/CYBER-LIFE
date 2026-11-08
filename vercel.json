@@ -2,6 +2,12 @@
   "version": 2,
   "buildCommand": null,
   "outputDirectory": "frontend",
+  "functions": {
+    "api/[...path].py": {
+      "includeFiles": "{backend/app/**/*.py,content/**/*.json}",
+      "maxDuration": 60
+    }
+  },
   "cleanUrls": true,
   "trailingSlash": false,
   "headers": [

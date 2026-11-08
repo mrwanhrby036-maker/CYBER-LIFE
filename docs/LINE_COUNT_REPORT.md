@@ -2,33 +2,36 @@
 
 تم توليده آليًا بواسطة `scripts/count_lines.py`. لا يشمل `node_modules` أو البيانات المحلية أو ملفات القفل.
 
-- إجمالي الملفات المعدودة: **139**
-- إجمالي الأسطر: **22620**
-- أسطر برمجية/محتوى (غير فارغة وغير تعليقات): **21559**
-- أسطر فارغة: 910 — تعليقات/عناوين: 151
+- إجمالي الملفات المعدودة: **142**
+- إجمالي الأسطر: **22679**
+- أسطر برمجية/محتوى (غير فارغة وغير تعليقات): **21611**
+- أسطر فارغة: 915 — تعليقات/عناوين: 153
 
 ## حسب المجلد
 
 | المجلد | ملفات | إجمالي الأسطر | أسطر فعلية |
 |---|---:|---:|---:|
-| `README_AR.md` | 1 | 58 | 33 |
-| `START_HERE_AR.txt` | 1 | 28 | 21 |
-| `backend` | 45 | 3560 | 2989 |
+| `README_AR.md` | 1 | 53 | 29 |
+| `START_HERE_AR.txt` | 1 | 25 | 18 |
+| `api` | 1 | 14 | 9 |
+| `backend` | 46 | 3593 | 3017 |
 | `content` | 19 | 14267 | 14267 |
 | `database` | 3 | 212 | 194 |
-| `docs` | 13 | 1939 | 1685 |
+| `docs` | 13 | 1945 | 1693 |
 | `firebase.json` | 1 | 5 | 5 |
 | `frontend` | 46 | 1934 | 1832 |
+| `requirements.txt` | 1 | 8 | 8 |
 | `scripts` | 5 | 317 | 259 |
 | `tests-frontend` | 4 | 275 | 249 |
-| `vercel.json` | 1 | 25 | 25 |
+| `vercel.json` | 1 | 31 | 31 |
 
 ## حسب الملف
 
 | الملف | إجمالي | فعلي | فارغ | تعليق |
 |---|---:|---:|---:|---:|
-| `README_AR.md` | 58 | 33 | 18 | 7 |
-| `START_HERE_AR.txt` | 28 | 21 | 7 | 0 |
+| `README_AR.md` | 53 | 29 | 17 | 7 |
+| `START_HERE_AR.txt` | 25 | 18 | 7 | 0 |
+| `api/[...path].py` | 14 | 9 | 3 | 2 |
 | `backend/.env.example` | 33 | 30 | 3 | 0 |
 | `backend/app/__init__.py` | 0 | 0 | 0 | 0 |
 | `backend/app/config.py` | 97 | 85 | 12 | 0 |
@@ -74,6 +77,7 @@
 | `backend/tests/test_laboratory_missions_reports.py` | 103 | 84 | 19 | 0 |
 | `backend/tests/test_scoring_rules_config.py` | 73 | 56 | 17 | 0 |
 | `backend/tests/test_teams_progress.py` | 67 | 53 | 14 | 0 |
+| `backend/tests/test_vercel_entrypoint.py` | 33 | 28 | 5 | 0 |
 | `content/chapter-01.json` | 671 | 671 | 0 | 0 |
 | `content/chapter-02.json` | 650 | 650 | 0 | 0 |
 | `content/chapter-03.json` | 655 | 655 | 0 | 0 |
@@ -98,17 +102,17 @@
 | `database/realtime_database_structure.json` | 56 | 56 | 0 | 0 |
 | `docs/API.md` | 111 | 79 | 22 | 10 |
 | `docs/ARCHITECTURE.md` | 74 | 51 | 16 | 7 |
-| `docs/DEPLOYMENT.md` | 74 | 49 | 19 | 6 |
-| `docs/FILE_MAP.md` | 225 | 165 | 43 | 17 |
+| `docs/DEPLOYMENT.md` | 46 | 22 | 18 | 6 |
+| `docs/FILE_MAP.md` | 228 | 168 | 43 | 17 |
 | `docs/FIREBASE_SETUP.md` | 34 | 19 | 10 | 5 |
 | `docs/FIREBASE_VERIFIED.md` | 31 | 19 | 8 | 4 |
-| `docs/GITHUB_AND_VERCEL.md` | 29 | 15 | 10 | 4 |
+| `docs/GITHUB_AND_VERCEL.md` | 24 | 11 | 9 | 4 |
 | `docs/IMPLEMENTATION_STATUS.md` | 35 | 20 | 10 | 5 |
-| `docs/LINE_COUNT_REPORT.md` | 168 | 159 | 6 | 3 |
+| `docs/LINE_COUNT_REPORT.md` | 173 | 164 | 6 | 3 |
 | `docs/SECURITY.md` | 41 | 22 | 12 | 7 |
 | `docs/TESTING.md` | 47 | 29 | 12 | 6 |
 | `docs/TEST_REPORT.md` | 30 | 18 | 8 | 4 |
-| `docs/line-count.json` | 1040 | 1040 | 0 | 0 |
+| `docs/line-count.json` | 1071 | 1071 | 0 | 0 |
 | `firebase.json` | 5 | 5 | 0 | 0 |
 | `frontend/achievements.html` | 22 | 22 | 0 | 0 |
 | `frontend/admin.html` | 22 | 22 | 0 | 0 |
@@ -156,6 +160,7 @@
 | `frontend/profile.html` | 22 | 22 | 0 | 0 |
 | `frontend/reports.html` | 22 | 22 | 0 | 0 |
 | `frontend/team.html` | 22 | 22 | 0 | 0 |
+| `requirements.txt` | 8 | 8 | 0 | 0 |
 | `scripts/count_lines.py` | 89 | 81 | 7 | 1 |
 | `scripts/make_transparent.py` | 91 | 67 | 17 | 7 |
 | `scripts/push_to_github.py` | 48 | 38 | 9 | 1 |
@@ -165,4 +170,4 @@
 | `tests-frontend/core.test.js` | 138 | 126 | 12 | 0 |
 | `tests-frontend/package.json` | 7 | 7 | 0 | 0 |
 | `tests-frontend/security-ui.test.js` | 81 | 71 | 8 | 2 |
-| `vercel.json` | 25 | 25 | 0 | 0 |
+| `vercel.json` | 31 | 31 | 0 | 0 |
