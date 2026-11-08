@@ -59,8 +59,9 @@
 | `core-layout.js` | الهيكل الجانبي وحارس الجلسة والأدمن |
 | `core-toast.js` | رسائل التنبيه |
 | `api-client.js` | عميل HTTP موحد يضيف الرمز ويفسر الأخطاء |
-| `auth.js` | دخول Google/البريد، الخروج، حفظ المستخدم |
-| `auth-firebase-config.js` | **الملف الذي تضع فيه إعدادات Firebase العامة** |
+| `auth.js` | دخول Google/البريد، حفظ الجلسة واستعادتها، تسجيل الخروج |
+| `auth-session.js` | منطق استعادة ID token وملف الحساب القابل للاختبار دون اتصال Firebase حي |
+| `auth-firebase-config.js` | إعدادات Firebase Web العامة (ليست أسرارًا) |
 | `page-landing.js` | الصفحة الرئيسية |
 | `page-login.js` | شاشة الدخول |
 | `page-dashboard.js` | لوحة الطالب |
@@ -201,9 +202,9 @@
 | `docs/TEST_REPORT.md` | نتيجة الاختبارات |
 | `docs/IMPLEMENTATION_STATUS.md` | ما تم وما تبقى |
 | `docs/LINE_COUNT_REPORT.md` | عدّ الأسطر |
-| `scripts/serve_preview.sh` | تشغيل المعاينة على منفذ 8000 (بيانات معزولة) |
-| `scripts/push_to_github.sh` | رفع المشروع إلى GitHub مع فحص أسرار |
-| `scripts/run_tests.sh` | تشغيل كل الاختبارات |
+| `scripts/serve_preview.py` | تشغيل المعاينة على منفذ 8000 ببيانات معزولة |
+| `scripts/push_to_github.py` | رفع فرع العمل الحالي إلى origin بعد فحص الملفات الحساسة؛ يرفض main/master |
+| `scripts/run_tests.py` | تشغيل اختبارات Python وJavaScript وفحوص الصياغة |
 | `scripts/count_lines.py` | توليد تقرير الأسطر |
 | `scripts/make_transparent.py` | تحويل صور الخلفية البيضاء إلى شفافة |
 | `tests-frontend/` | اختبارات الواجهة |

@@ -1,13 +1,11 @@
-import { signInWithGoogle, signInWithEmail, signUpWithEmail, cachedUser, isBackendReachable } from './auth.js';
+import { signInWithGoogle, signInWithEmail, signUpWithEmail, restoreUserSession, hasRestoredFirebaseUser, signOut, isBackendReachable } from './auth.js';
 import { isFirebaseConfigured } from './auth-firebase-config.js';
-import { getToken } from './api-client.js';
 import { qs } from './core-dom.js';
 import { validateForm, formData, setBusy } from './core-forms.js';
 import { toast } from './core-toast.js';
 import { icon } from './core-icons.js';
 
 const root = qs('#authRoot');
-if (getToken() && cachedUser()) location.replace('dashboard.html');
 
 // رسائل مفهومة للمستخدم بدل رموز الأخطاء التقنية.
 function friendlyError(err) {
@@ -23,12 +21,16 @@ function friendlyError(err) {
   if (code.includes('popup-blocked')) return 'المتصفح منع النافذة المنبثقة. اسمح بها ثم حاول مرة أخرى.';
   if (code.includes('unauthorized-domain')) return 'هذا النطاق غير مضاف بعد لإعدادات الدخول. تواصل مع إدارة المنصة.';
   if (code.includes('operation-not-allowed')) return 'طريقة الدخول هذه غير متاحة حالياً. تواصل مع إدارة المنصة.';
-  if (code.includes('network')) return 'تعذر الاتصال بالخدمة. تحقق من اتصالك بالإنترنت.';
-  if (err?.status === 0) return 'تعذر الاتصال بالخدمة. حاول مرة أخرى بعد قليل.';
+  if (err?.code === 'auth/in-progress') return 'توجد عملية تسجيل دخول قيد التنفيذ.';
+  if (err?.code === 'api_config_error') return 'عنوان Backend غير صالح. اضبط عنوان HTTPS الحقيقي في frontend/config.js؛ localhost غير مسموح على الموقع المنشور.';
+  if (err?.status === 0) return 'تم التحقق من تسجيل الدخول، لكن خادم المنصة غير متاح الآن. جلستك محفوظة؛ أعد المحاولة بعد إعداد الخادم أو عودته للعمل.';
+  if (err?.status === 404) return 'مسار API غير موجود على هذا النطاق. اضبط عنوان Backend في إعدادات الواجهة.';
+  if (err?.status >= 500) return 'خادم المنصة يواجه مشكلة مؤقتة. جلستك محفوظة؛ أعد المحاولة لاحقًا.';
+  if (code.includes('network')) return 'تعذر الاتصال بخدمة تسجيل الدخول. تحقق من اتصالك بالإنترنت.';
   return 'تعذر إكمال العملية. حاول مرة أخرى.';
 }
 
-function render(backendOnline = true) {
+function render(backendOnline = true, sessionPending = false) {
   const ready = isFirebaseConfigured();
   root.innerHTML = `
     <div class="auth-brand">
@@ -36,13 +38,18 @@ function render(backendOnline = true) {
       <h1>CYBER LIFE</h1>
       <p class="muted">سجّل الدخول للمتابعة إلى فريقك ومهامك</p>
     </div>
-    ${!backendOnline ? `
+    ${sessionPending ? `
       <div class="alert info mb-2" style="font-size:.9rem;line-height:1.8">
-        المنصة في مرحلة التجهيز. يمكنك إنشاء حسابك الآن، وستُفتح الدروس والمهام
-        بمجرد اكتمال ربط الخدمة. تابعنا قريبًا.
+        جلسة تسجيل الدخول محفوظة. تعذر الاتصال بخادم الحسابات؛ لن نطلب منك تسجيل الدخول مرة أخرى. أعد محاولة الاتصال بعد إعداد Backend.
+      </div>
+      <button class="btn primary" id="retryBackendBtn" type="button" style="width:100%">إعادة محاولة الاتصال</button>
+      <button class="btn ghost mt-1" id="sessionLogoutBtn" type="button" style="width:100%">تسجيل الخروج من الجلسة المحفوظة</button>
+    ` : !backendOnline ? `
+      <div class="alert info mb-2" style="font-size:.9rem;line-height:1.8">
+        خادم المنصة غير متاح على عنوان API الحالي. تحميل ملف الحساب والدروس يتطلب اتصال Backend. تحقق من ضبط عنوانه ثم أعد المحاولة.
       </div>
     ` : ''}
-    ${ready ? `
+    ${ready ? (sessionPending ? '' : `
       <button class="btn primary" id="googleBtn" type="button" style="width:100%">
         ${icon('google')}<span>المتابعة باستخدام Google</span>
       </button>
@@ -65,7 +72,7 @@ function render(backendOnline = true) {
       <p class="muted mt-2" style="font-size:.85rem;text-align:center">
         سيتم إنشاء ملفك التدريبي تلقائيًا عند أول دخول.
       </p>
-    ` : `
+    `) : `
       <div class="alert warn mb-2">
         خدمة تسجيل الدخول غير متاحة حاليًا. يرجى المحاولة لاحقًا أو التواصل مع إدارة المنصة.
       </div>
@@ -75,12 +82,29 @@ function render(backendOnline = true) {
       <br><a href="index.html">العودة إلى الصفحة الرئيسية</a>
     </div>`;
 
-  // بعد نجاح الدخول: انتقل للوحة فقط لو الخدمة متاحة، وإلا اعرض حالة واضحة.
-  const afterSignIn = () => {
-    if (backendOnline) { location.href = 'dashboard.html'; return; }
-    toast('تم إنشاء حسابك بنجاح. الدروس والمهام ستُفتح بعد اكتمال التجهيز.', 'success');
-    location.href = 'index.html';
-  };
+  // لا يُعد الدخول مكتملاً إلا بعد استرجاع ملف الحساب من /api/auth/me.
+  const afterSignIn = () => { location.replace('dashboard.html'); };
+
+  const retryBtn = qs('#retryBackendBtn');
+  if (retryBtn) retryBtn.addEventListener('click', async () => {
+    setBusy(retryBtn, true, 'جارٍ التحقق…');
+    try {
+      const user = await restoreUserSession();
+      if (user) afterSignIn();
+      else { render(false); }
+    } catch (err) {
+      toast(friendlyError(err), 'error');
+      setBusy(retryBtn, false);
+    }
+  });
+
+  const sessionLogoutBtn = qs('#sessionLogoutBtn');
+  if (sessionLogoutBtn) sessionLogoutBtn.addEventListener('click', async () => {
+    setBusy(sessionLogoutBtn, true, 'جارٍ الخروج…');
+    await signOut();
+    toast('تم تسجيل الخروج بنجاح.', 'success');
+    render(false);
+  });
 
   const googleBtn = qs('#googleBtn');
   if (googleBtn) googleBtn.addEventListener('click', async () => {
@@ -118,5 +142,28 @@ function render(backendOnline = true) {
   });
 }
 
-// افحص الخدمة مرة واحدة عند فتح الشاشة، ولا تعطّل النموذج إذا كانت غير متاحة.
-isBackendReachable().then(render);
+// استعادة جلسة Firebase بعد تحديث الصفحة، ثم التحقق من الحساب عبر الـ API.
+// في حال تعطل الخادم لا نمسح جلسة Firebase ولا نعيد المستخدم إلى تسجيل الدخول.
+async function bootLoginPage() {
+  const backendOnline = await isBackendReachable();
+  if (backendOnline) {
+    try {
+      const user = await restoreUserSession();
+      if (user) { location.replace('dashboard.html'); return; }
+    } catch (error) {
+      if (error?.status === 401) await signOut();
+      else {
+        try {
+          if (await hasRestoredFirebaseUser()) { render(false, true); return; }
+        } catch { /* no recoverable persisted Firebase user */ }
+      }
+    }
+  } else {
+    try {
+      if (await hasRestoredFirebaseUser()) { render(false, true); return; }
+    } catch { /* Firebase session restoration will be retried on user action */ }
+  }
+  render(backendOnline);
+}
+
+bootLoginPage().catch(() => render(false));

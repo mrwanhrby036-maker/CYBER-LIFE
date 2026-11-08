@@ -68,10 +68,14 @@ test('login errors are user-friendly, never raw technical codes', () => {
   assert.ok(!client.includes('API_BASE'), 'api client exposes API_BASE to users');
 });
 
-test('login degrades gracefully when backend is not deployed yet', () => {
+test('login preserves a restored Firebase session and does not prompt to sign in again when API is offline', () => {
   const login = read('frontend/js/page-login.js');
   assert.match(login, /isBackendReachable/);
-  assert.match(login, /المنصة في مرحلة التجهيز/);
+  assert.match(login, /hasRestoredFirebaseUser/);
+  assert.match(login, /جلسة تسجيل الدخول محفوظة/);
+  assert.match(login, /إعادة محاولة الاتصال/);
+  assert.match(login, /sessionLogoutBtn/);
+  assert.ok(!login.includes('المنصة في مرحلة التجهيز'), 'must not claim account creation succeeded without /api/auth/me');
   assert.ok(!/await signInWithGoogle\(\); location\.href = 'dashboard\.html'/.test(login),
-            'must not hard-redirect to dashboard without a backend check');
+            'must not redirect before the authenticated profile is returned');
 });

@@ -1,90 +1,74 @@
-# النشر
+# النشر والتكامل
 
-> لا توجد مفاتيح حقيقية في المستودع. اتبع الخطوات واملأ القيم من مشروع Firebase الخاص بك `hamo-8132e`.
+## تشخيص البنية الحالية
 
-## 1) Firebase (المشروع القائم)
+- `vercel.json` ينشر محتويات `frontend/` كملفات ثابتة فقط؛ لا يعرّف دوال Python أو rewrite إلى FastAPI.
+- `frontend/config.js` لا يحتوي عنوان Backend، لذلك يطلب المتصفح `/api/...` على نفس نطاق Vercel. هذا يعمل فقط إذا كان FastAPI على النطاق نفسه، وهو غير مُعدّ في هذا المستودع.
+- لا يوجد عنوان استضافة Backend فعلي في الملفات؛ لا تضع عنوانًا تخمينيًا. يجب اختيار مضيف يدعم Docker/ASGI أولًا.
+- إعدادات Firebase Web العامة الحالية موجودة في `frontend/js/auth-firebase-config.js`. مفاتيح Web ليست أسرارًا؛ لا تضع بيانات Service Account في الواجهة.
 
-1. من Firebase Console → Project settings → Your apps → Web app، انسخ `firebaseConfig`.
-2. ضع القيم في `frontend/js/auth-firebase-config.js` (الحقول الفارغة حاليًا). لا تخترع قيمًا.
-3. فعّل Authentication → Sign-in method → Email/Password و Google.
-4. أنشئ Realtime Database (ليس Firestore) وانسخ `databaseURL`.
-5. أنشئ Service account key (JSON) من Project settings → Service accounts. احفظه خارج Git.
-6. انشر القواعد:
+## 1) Firebase
+
+1. في Firebase Console للمشروع `hamo-8132e`، تحقق من تفعيل Authentication → Sign-in method → Google. البريد وكلمة المرور مستخدمان أيضًا في واجهة الدخول.
+2. أضف نطاق الإنتاج الفعلي `cyber-life-wheat.vercel.app` وأي نطاق إنتاج مخصص إلى Authentication → Settings → Authorized domains. أضف Preview domains عند الحاجة، ولا تضف نطاقات لا تثق بها.
+3. تحقق أن Realtime Database تستخدم عنوان `https://hamo-8132e-default-rtdb.europe-west1.firebasedatabase.app` وأن قواعدها المنشورة مطابقة لـ `database/database.rules.json`.
+4. القواعد في المستودع تمنع القراءة والكتابة العامة، وتجعل الكتابة من الخادم فقط. شغّل النشر يدويًا بعد مراجعتها:
    ```bash
-   firebase login
    firebase deploy --only database --project hamo-8132e
    ```
-7. ضع UID الأدمن الأول في `CYBERLIFE_ADMIN_UIDS`.
+5. أنشئ Service Account للخادم فقط. خزّن JSON في Secret Manager أو ملف سر خارج Git.
 
-## 2) الخادم الخلفي (ASGI منفصل، ليس Render Free)
+> توجد في `docs/FIREBASE_VERIFIED.md` ملاحظات تحقق سابقة، لكنها لا تثبت أن إعدادات Firebase أو القواعد الحالية ما زالت منشورة. لا يمكن إعادة التحقق الحي من Firebase ضمن هذا التغيير.
 
-خيارات: Fly.io، Railway مدفوع، DigitalOcean App Platform، VPS، أو أي مضيف يدعم Docker/ASGI.
+## 2) استضافة Backend مستقلة
 
-### Docker
+FastAPI يحتاج مضيفًا يدعم Docker/ASGI (مثل VPS أو خدمة حاويات/ASGI). لا يقوم إعداد Vercel الحالي بتشغيل هذا Backend تلقائيًا. بعد اختيار المضيف، اربط له نطاق HTTPS حقيقي، مثل `api.<your-domain>`؛ هذا مثال شكلي فقط وليس عنوانًا موجودًا.
+
+ابنِ الحاوية من جذر المستودع:
 
 ```bash
 docker build -f backend/Dockerfile -t cyberlife-api .
-docker run -p 8000:8000 --env-file backend/.env cyberlife-api
 ```
 
-### متغيرات البيئة (`backend/.env`)
+اضبط أسرار وبيئة الخادم في لوحة المضيف، على الأقل:
 
-انسخ `backend/.env.example` إلى `backend/.env` واملأ:
-
-```
+```text
 CYBERLIFE_ENV=production
 CYBERLIFE_AUTH_MODE=firebase
 CYBERLIFE_STORAGE_MODE=firebase
 CYBERLIFE_SERVE_FRONTEND=false
 CYBERLIFE_FIREBASE_PROJECT_ID=hamo-8132e
 CYBERLIFE_FIREBASE_DATABASE_URL=https://hamo-8132e-default-rtdb.europe-west1.firebasedatabase.app
-CYBERLIFE_FIREBASE_CREDENTIALS_FILE=/run/secrets/firebase.json
-CYBERLIFE_ADMIN_UIDS=<uid>
-CYBERLIFE_CORS_ORIGINS=https://<your-vercel-app>.vercel.app
+CYBERLIFE_FIREBASE_CREDENTIALS_JSON=<secret JSON from secret manager>
+CYBERLIFE_CORS_ORIGINS=https://cyber-life-wheat.vercel.app
+CYBERLIFE_ADMIN_UIDS=<trusted Firebase Auth UID(s), optional>
 ```
 
-> `databaseURL` أعلاه مثال شائع؛ استخدم القيمة الفعلية من Console (قد تكون منطقة مختلفة).
+استخدم `CYBERLIFE_FIREBASE_CREDENTIALS_FILE` بدلًا من `..._JSON` إذا وفر المضيف ملف Secret. لا تحفظ السر في Git ولا في إعدادات Vercel frontend. سيشترط إعداد الإنتاج Firebase Auth وRTDB وعناوين CORS HTTPS صريحة.
 
-شغّل: `uvicorn app.main:app --host 0.0.0.0 --port 8000` خلف HTTPS (reverse proxy أو المنصة).
+يجب أن ينجح `GET https://<actual-backend-host>/api/health` وأن يرجع `{ "status": "ok", ... }`. نقطة الحساب هي `GET /api/auth/me` مع `Authorization: Bearer <Firebase ID token>`؛ يتحقق الخادم من الرمز، ينشئ ملف المستخدم للمرة الأولى، ثم يرجع ملفًا عامًا ودور المستخدم. لا تستخدم مسارات `localhost` في إعداد الإنتاج.
 
-## 3) الواجهة على Vercel
+## 3) ربط واجهة Vercel
 
-1. اربط المستودع بـ Vercel. الإعدادات في `vercel.json` تجعل `frontend` هو مجلد الإخراج.
-2. عدّل `frontend/config.js`:
+بعد اختيار عنوان Backend الحقيقي:
+
+1. ضع عنوان HTTPS الجذري (من دون `/api`) في `frontend/config.js`:
    ```js
-   window.CYBERLIFE_API_BASE = 'https://api.your-domain.com';
+   window.CYBERLIFE_API_BASE = 'https://<actual-backend-host>';
    ```
-3. عدّل `frontend/js/auth-firebase-config.js` بقيم Web App.
-4. انشر. تأكد أن أصل Vercel مضاف في `CYBERLIFE_CORS_ORIGINS`.
+2. أعد نشر واجهة Vercel بعد ضبط العنوان. هذا ملف إعداد عام مرئي للمتصفح، لذلك لا تضع أي سر فيه.
+3. تأكد أن `CYBERLIFE_CORS_ORIGINS` في Backend يحتوي أصل Vercel الدقيق، بلا wildcard. إذا كانت هناك معاينات Vercel، أضف نطاقات محددة موثوقة فقط أو اترك المعاينات خارج CORS.
+4. افحص في أدوات المتصفح أن الطلبين التاليين يذهبان إلى Backend الحقيقي لا إلى Vercel ولا إلى `localhost`:
+   - `GET /api/health`
+   - `GET /api/auth/me` بعد OAuth، مع رأس Authorization.
 
-## 4) التحقق بعد النشر
+إذا كان Backend وواجهة الموقع على النطاق نفسه ويقدّم الخادم FastAPI تلك الملفات، اترك `CYBERLIFE_API_BASE` فارغًا؛ عندها تكون المسارات النسبية مقصودة. هذا ليس وضع النشر الحالي على Vercel.
 
-- `GET https://api.../api/health` → `auth: firebase`, `storage: firebase`.
-- تسجيل دخول Google من الواجهة.
-- إنشاء فريق، إكمال درس، استلام مهمة.
-- محاولة كتابة مباشرة إلى RTDB من العميل يجب أن تُرفض.
+## 4) قائمة التحقق قبل الإنتاج
 
-## 5) المعاينة المعزولة (Sandbox)
-
-لتشغيل المعاينة على منفذ 8000:
-
-```bash
-./scripts/serve_preview.sh
-```
-
-- يولّد بيانات دخول **مؤقتة عشوائية** أول مرة ويحفظها في `backend/.data/preview-credentials.json` (مستثنى من Git).
-- لا تُعرض أي بيانات دخول في الواجهة.
-- احذف الملف لتدوير البيانات، واحذف `backend/.data/database.json` لتصفير البيانات.
-- **هذا ليس الإنتاج**: الإنتاج يتطلب `CYBERLIFE_ENV=production` مع Firebase.
-
-## 5) التطوير المحلي
-
-```bash
-cd backend
-python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-cp .env.example .env   # اترك auth/storage=local
-uvicorn app.main:app --reload --port 8000
-```
-
-لا توجد حسابات دخول افتراضية معروضة. استخدم Firebase Authentication. وضع الاختبار المحلي معطل افتراضياً ومخصص للاختبارات المعزولة فقط.
+- Google provider مفعّل والنطاق مصرح به في Firebase Auth.
+- قواعد RTDB المنشورة ومراجعة؛ لا تستخدم قواعد عامة.
+- Backend مستقل متاح عبر HTTPS، وأسرار Firebase على الخادم فقط.
+- `CYBERLIFE_API_BASE` يشير إلى Backend الحقيقي، وCORS يطابق أصل Vercel.
+- اختبر OAuth الفعلي، عودة المستخدم إلى المنصة، تحديث الصفحة، قراءة الملف، وتسجيل الخروج قبل نشر أي إصدار إنتاجي.
+- لا توجد في هذا التغيير عملية نشر إلى Firebase أو Vercel أو مضيف Backend.

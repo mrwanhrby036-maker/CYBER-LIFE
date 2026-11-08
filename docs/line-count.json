@@ -1,9 +1,9 @@
 {
   "totals": {
-    "total": 22525,
-    "code": 21391,
-    "blank": 976,
-    "comment": 158
+    "total": 22620,
+    "code": 21559,
+    "blank": 910,
+    "comment": 151
   },
   "by_top": {
     "README_AR.md": {
@@ -11,10 +11,15 @@
       "total": 58,
       "code": 33
     },
+    "START_HERE_AR.txt": {
+      "files": 1,
+      "total": 28,
+      "code": 21
+    },
     "backend": {
       "files": 45,
-      "total": 3529,
-      "code": 2961
+      "total": 3560,
+      "code": 2989
     },
     "content": {
       "files": 19,
@@ -28,8 +33,8 @@
     },
     "docs": {
       "files": 13,
-      "total": 2284,
-      "code": 1892
+      "total": 1939,
+      "code": 1685
     },
     "firebase.json": {
       "files": 1,
@@ -37,19 +42,19 @@
       "code": 5
     },
     "frontend": {
-      "files": 45,
-      "total": 1690,
-      "code": 1619
+      "files": 46,
+      "total": 1934,
+      "code": 1832
     },
     "scripts": {
       "files": 5,
-      "total": 265,
-      "code": 225
+      "total": 317,
+      "code": 259
     },
     "tests-frontend": {
-      "files": 3,
-      "total": 190,
-      "code": 170
+      "files": 4,
+      "total": 275,
+      "code": 249
     },
     "vercel.json": {
       "files": 1,
@@ -64,6 +69,13 @@
       "code": 33,
       "blank": 18,
       "comment": 7
+    },
+    {
+      "path": "START_HERE_AR.txt",
+      "total": 28,
+      "code": 21,
+      "blank": 7,
+      "comment": 0
     },
     {
       "path": "backend/.env.example",
@@ -109,10 +121,10 @@
     },
     {
       "path": "backend/app/dependencies.py",
-      "total": 50,
-      "code": 39,
+      "total": 53,
+      "code": 41,
       "blank": 11,
-      "comment": 0
+      "comment": 1
     },
     {
       "path": "backend/app/errors.py",
@@ -305,8 +317,8 @@
     },
     {
       "path": "backend/app/service_users.py",
-      "total": 103,
-      "code": 90,
+      "total": 107,
+      "code": 94,
       "blank": 11,
       "comment": 2
     },
@@ -333,8 +345,8 @@
     },
     {
       "path": "backend/tests/conftest.py",
-      "total": 87,
-      "code": 65,
+      "total": 88,
+      "code": 66,
       "blank": 22,
       "comment": 0
     },
@@ -354,9 +366,9 @@
     },
     {
       "path": "backend/tests/test_health_auth.py",
-      "total": 54,
-      "code": 36,
-      "blank": 18,
+      "total": 77,
+      "code": 57,
+      "blank": 20,
       "comment": 0
     },
     {
@@ -536,8 +548,8 @@
     },
     {
       "path": "docs/API.md",
-      "total": 112,
-      "code": 80,
+      "total": 111,
+      "code": 79,
       "blank": 22,
       "comment": 10
     },
@@ -550,78 +562,78 @@
     },
     {
       "path": "docs/DEPLOYMENT.md",
-      "total": 90,
-      "code": 58,
-      "blank": 23,
-      "comment": 9
+      "total": 74,
+      "code": 49,
+      "blank": 19,
+      "comment": 6
     },
     {
       "path": "docs/FILE_MAP.md",
-      "total": 224,
-      "code": 164,
+      "total": 225,
+      "code": 165,
       "blank": 43,
       "comment": 17
     },
     {
       "path": "docs/FIREBASE_SETUP.md",
-      "total": 150,
-      "code": 96,
-      "blank": 42,
-      "comment": 12
+      "total": 34,
+      "code": 19,
+      "blank": 10,
+      "comment": 5
     },
     {
       "path": "docs/FIREBASE_VERIFIED.md",
-      "total": 114,
-      "code": 71,
-      "blank": 35,
-      "comment": 8
+      "total": 31,
+      "code": 19,
+      "blank": 8,
+      "comment": 4
     },
     {
       "path": "docs/GITHUB_AND_VERCEL.md",
-      "total": 151,
-      "code": 88,
-      "blank": 48,
-      "comment": 15
+      "total": 29,
+      "code": 15,
+      "blank": 10,
+      "comment": 4
     },
     {
       "path": "docs/IMPLEMENTATION_STATUS.md",
-      "total": 58,
-      "code": 36,
-      "blank": 15,
-      "comment": 7
+      "total": 35,
+      "code": 20,
+      "blank": 10,
+      "comment": 5
     },
     {
       "path": "docs/LINE_COUNT_REPORT.md",
-      "total": 162,
-      "code": 153,
+      "total": 168,
+      "code": 159,
       "blank": 6,
       "comment": 3
     },
     {
       "path": "docs/SECURITY.md",
-      "total": 40,
-      "code": 21,
+      "total": 41,
+      "code": 22,
       "blank": 12,
       "comment": 7
     },
     {
       "path": "docs/TESTING.md",
-      "total": 45,
-      "code": 28,
-      "blank": 11,
-      "comment": 6
-    },
-    {
-      "path": "docs/TEST_REPORT.md",
-      "total": 64,
-      "code": 46,
+      "total": 47,
+      "code": 29,
       "blank": 12,
       "comment": 6
     },
     {
+      "path": "docs/TEST_REPORT.md",
+      "total": 30,
+      "code": 18,
+      "blank": 8,
+      "comment": 4
+    },
+    {
       "path": "docs/line-count.json",
-      "total": 1000,
-      "code": 1000,
+      "total": 1040,
+      "code": 1040,
       "blank": 0,
       "comment": 0
     },
@@ -753,10 +765,10 @@
     },
     {
       "path": "frontend/js/api-client.js",
-      "total": 39,
-      "code": 37,
+      "total": 57,
+      "code": 53,
       "blank": 2,
-      "comment": 0
+      "comment": 2
     },
     {
       "path": "frontend/js/auth-firebase-config.js",
@@ -766,17 +778,24 @@
       "comment": 5
     },
     {
+      "path": "frontend/js/auth-session.js",
+      "total": 22,
+      "code": 17,
+      "blank": 1,
+      "comment": 4
+    },
+    {
       "path": "frontend/js/auth.js",
-      "total": 91,
-      "code": 79,
-      "blank": 11,
-      "comment": 1
+      "total": 213,
+      "code": 183,
+      "blank": 18,
+      "comment": 12
     },
     {
       "path": "frontend/js/core-config.js",
-      "total": 6,
-      "code": 5,
-      "blank": 0,
+      "total": 41,
+      "code": 38,
+      "blank": 2,
       "comment": 1
     },
     {
@@ -865,10 +884,10 @@
     },
     {
       "path": "frontend/js/page-login.js",
-      "total": 122,
-      "code": 110,
-      "blank": 9,
-      "comment": 3
+      "total": 169,
+      "code": 153,
+      "blank": 12,
+      "comment": 4
     },
     {
       "path": "frontend/js/page-missions.js",
@@ -962,31 +981,38 @@
       "comment": 7
     },
     {
-      "path": "scripts/push_to_github.sh",
-      "total": 26,
-      "code": 23,
-      "blank": 3,
-      "comment": 0
-    },
-    {
-      "path": "scripts/run_tests.sh",
-      "total": 11,
-      "code": 11,
-      "blank": 0,
-      "comment": 0
-    },
-    {
-      "path": "scripts/serve_preview.sh",
+      "path": "scripts/push_to_github.py",
       "total": 48,
-      "code": 43,
-      "blank": 5,
+      "code": 38,
+      "blank": 9,
+      "comment": 1
+    },
+    {
+      "path": "scripts/run_tests.py",
+      "total": 38,
+      "code": 29,
+      "blank": 8,
+      "comment": 1
+    },
+    {
+      "path": "scripts/serve_preview.py",
+      "total": 51,
+      "code": 44,
+      "blank": 6,
+      "comment": 1
+    },
+    {
+      "path": "tests-frontend/auth-session.test.js",
+      "total": 49,
+      "code": 45,
+      "blank": 4,
       "comment": 0
     },
     {
       "path": "tests-frontend/core.test.js",
-      "total": 106,
-      "code": 96,
-      "blank": 10,
+      "total": 138,
+      "code": 126,
+      "blank": 12,
       "comment": 0
     },
     {
@@ -998,8 +1024,8 @@
     },
     {
       "path": "tests-frontend/security-ui.test.js",
-      "total": 77,
-      "code": 67,
+      "total": 81,
+      "code": 71,
       "blank": 8,
       "comment": 2
     },
