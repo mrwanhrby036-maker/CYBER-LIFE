@@ -13,7 +13,10 @@
 |---|---|
 | `README_AR.md` | مدخل المشروع بالعربي |
 | `firebase.json` | يقول لـ Firebase CLI أين ملف القواعد |
-| `vercel.json` | إعداد نشر الواجهة على Vercel |
+| `vercel.json` | إعداد الواجهة الثابتة ودالة FastAPI على Vercel |
+| `api/[...path].py` | يربط مسارات `/api/*` بتطبيق FastAPI القائم |
+| `requirements.txt` | اعتمادات Python Runtime على Vercel |
+| `.python-version` | نسخة Python المستخدمة على Vercel |
 | `.gitignore` | يمنع رفع الأسرار والبيانات المحلية |
 | `.dockerignore` | يمنع نسخ الملفات غير الضرورية لصورة Docker |
 

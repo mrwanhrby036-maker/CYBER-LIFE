@@ -3,8 +3,8 @@
 تم توليده آليًا بواسطة `scripts/count_lines.py`. لا يشمل `node_modules` أو البيانات المحلية أو ملفات القفل.
 
 - إجمالي الملفات المعدودة: **142**
-- إجمالي الأسطر: **22676**
-- أسطر برمجية/محتوى (غير فارغة وغير تعليقات): **21608**
+- إجمالي الأسطر: **22679**
+- أسطر برمجية/محتوى (غير فارغة وغير تعليقات): **21611**
 - أسطر فارغة: 915 — تعليقات/عناوين: 153
 
 ## حسب المجلد
@@ -13,13 +13,13 @@
 |---|---:|---:|---:|
 | `README_AR.md` | 1 | 53 | 29 |
 | `START_HERE_AR.txt` | 1 | 25 | 18 |
+| `api` | 1 | 14 | 9 |
 | `backend` | 46 | 3593 | 3017 |
 | `content` | 19 | 14267 | 14267 |
 | `database` | 3 | 212 | 194 |
-| `docs` | 13 | 1942 | 1690 |
+| `docs` | 13 | 1945 | 1693 |
 | `firebase.json` | 1 | 5 | 5 |
 | `frontend` | 46 | 1934 | 1832 |
-| `main.py` | 1 | 14 | 9 |
 | `requirements.txt` | 1 | 8 | 8 |
 | `scripts` | 5 | 317 | 259 |
 | `tests-frontend` | 4 | 275 | 249 |
@@ -31,6 +31,7 @@
 |---|---:|---:|---:|---:|
 | `README_AR.md` | 53 | 29 | 17 | 7 |
 | `START_HERE_AR.txt` | 25 | 18 | 7 | 0 |
+| `api/[...path].py` | 14 | 9 | 3 | 2 |
 | `backend/.env.example` | 33 | 30 | 3 | 0 |
 | `backend/app/__init__.py` | 0 | 0 | 0 | 0 |
 | `backend/app/config.py` | 97 | 85 | 12 | 0 |
@@ -102,7 +103,7 @@
 | `docs/API.md` | 111 | 79 | 22 | 10 |
 | `docs/ARCHITECTURE.md` | 74 | 51 | 16 | 7 |
 | `docs/DEPLOYMENT.md` | 46 | 22 | 18 | 6 |
-| `docs/FILE_MAP.md` | 225 | 165 | 43 | 17 |
+| `docs/FILE_MAP.md` | 228 | 168 | 43 | 17 |
 | `docs/FIREBASE_SETUP.md` | 34 | 19 | 10 | 5 |
 | `docs/FIREBASE_VERIFIED.md` | 31 | 19 | 8 | 4 |
 | `docs/GITHUB_AND_VERCEL.md` | 24 | 11 | 9 | 4 |
@@ -159,7 +160,6 @@
 | `frontend/profile.html` | 22 | 22 | 0 | 0 |
 | `frontend/reports.html` | 22 | 22 | 0 | 0 |
 | `frontend/team.html` | 22 | 22 | 0 | 0 |
-| `main.py` | 14 | 9 | 3 | 2 |
 | `requirements.txt` | 8 | 8 | 0 | 0 |
 | `scripts/count_lines.py` | 89 | 81 | 7 | 1 |
 | `scripts/make_transparent.py` | 91 | 67 | 17 | 7 |

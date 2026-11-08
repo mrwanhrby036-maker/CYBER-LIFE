@@ -1,4 +1,4 @@
-# Production dependencies for Vercel's Python Runtime (ASGI FastAPI entrypoint: main.py).
+# Production dependencies for Vercel's Python Runtime (FastAPI entrypoint: api/[...path].py).
 fastapi>=0.115,<1
 pydantic>=2.10,<3
 pydantic-settings>=2.6,<3

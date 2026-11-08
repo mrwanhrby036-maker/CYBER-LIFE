@@ -2,7 +2,7 @@
 
 ## إعداد Vercel في هذا الفرع
 
-أُضيف مدخل Python ASGI في `main.py` يستورد تطبيق FastAPI الموجود في `backend/app` دون نسخ منطق API أو استبدال المنصة. يبقي `vercel.json` صفحات `frontend/` كملفات ثابتة ويضبط Function Python بملفات التطبيق ومحتوى `content/`. يحتوي `requirements.txt` الجذري على اعتمادات التشغيل فقط، و`.python-version` يطابق Python 3.12 المستخدم في Docker.
+أُضيف مدخل Python ASGI في `api/[...path].py` يستورد تطبيق FastAPI الموجود في `backend/app` دون نسخ منطق API أو استبدال المنصة. يبقي `vercel.json` صفحات `frontend/` كملفات ثابتة ويضبط Function Python بملفات التطبيق ومحتوى `content/`. يحتوي `requirements.txt` الجذري على اعتمادات التشغيل فقط، و`.python-version` يطابق Python 3.12 المستخدم في Docker.
 
 عند نجاح البناء، تكون الواجهة والـAPI على النطاق نفسه؛ اترك `window.CYBERLIFE_API_BASE` فارغًا في `frontend/config.js`، وستستخدم الواجهة المسارات النسبية مثل `/api/health` و`/api/auth/me`. لا تضع `/api` في عنوان أساس ولا تستخدم `localhost`.
 

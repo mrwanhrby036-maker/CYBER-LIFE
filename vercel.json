@@ -3,7 +3,7 @@
   "buildCommand": null,
   "outputDirectory": "frontend",
   "functions": {
-    "main.py": {
+    "api/[...path].py": {
       "includeFiles": "{backend/app/**/*.py,content/**/*.json}",
       "maxDuration": 60
     }
