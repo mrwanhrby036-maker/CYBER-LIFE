@@ -72,20 +72,52 @@ test('form validation enforces required, min, email and json', async () => {
 });
 
 test('API client attaches bearer token and parses errors', async () => {
-  localStorage.setItem('cyberlife_token', 'test-token');
   let captured;
   global.fetch = async (url, opts) => {
     captured = { url, opts };
     return { ok: true, status: 200, text: async () => JSON.stringify({ ok: true }) };
   };
-  const { api, setToken } = await import('../frontend/js/api-client.js');
+  const { api, setToken, getToken } = await import('../frontend/js/api-client.js');
+  setToken('test-token');
+  assert.equal(localStorage.getItem('cyberlife_token'), null, 'Firebase ID tokens must not be persisted by the app');
+  assert.equal(getToken(), 'test-token');
   const data = await api('/api/health');
   assert.deepEqual(data, { ok: true });
+  assert.equal(captured.url, '/api/health', 'unconfigured base uses an explicit same-origin API path, never an empty URL');
   assert.equal(captured.opts.headers.Authorization, 'Bearer test-token');
   global.fetch = async () => ({ ok: false, status: 403, text: async () => JSON.stringify({ error: { code: 'forbidden', message: 'ممنوع' } }) });
   await assert.rejects(() => api('/api/admin/overview', { silent: true }), err => err.status === 403 && err.code === 'forbidden');
+  setToken('local.development-token');
+  assert.equal(getToken(), 'local.development-token');
+  assert.equal(localStorage.getItem('cyberlife_token'), 'local.development-token');
   setToken('');
   assert.equal(localStorage.getItem('cyberlife_token'), null);
+});
+
+test('API base can target a separately hosted HTTPS backend without localhost', async () => {
+  const original = window.CYBERLIFE_API_BASE;
+  window.CYBERLIFE_API_BASE = 'https://api.example.test/';
+  try {
+    const { apiUrl } = await import('../frontend/js/core-config.js?external-api-test');
+    assert.equal(apiUrl('/api/auth/me'), 'https://api.example.test/api/auth/me');
+  } finally {
+    window.CYBERLIFE_API_BASE = original;
+  }
+});
+
+test('deployed frontend rejects localhost API targets before making a request', async () => {
+  const previousWindow = global.window;
+  const deployed = new JSDOM('<!doctype html><html></html>', { url: 'https://cyber-life-wheat.vercel.app/' });
+  deployed.window.CYBERLIFE_API_BASE = 'http://localhost:8000';
+  global.window = deployed.window;
+  try {
+    const config = await import('../frontend/js/core-config.js?reject-production-localhost');
+    assert.ok(config.API_CONFIG_ERROR);
+    assert.throws(() => config.apiUrl('/api/auth/me'), { code: 'api_config_error' });
+  } finally {
+    global.window = previousWindow;
+    deployed.window.close();
+  }
 });
 
 test('admin page requires admin role in layout guard', () => {

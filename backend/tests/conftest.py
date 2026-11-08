@@ -42,6 +42,7 @@ def settings(tmp_path, seeded_template):
         dev_admin_password="Admin-Test-Password-123!",
         rate_limit_per_minute=10000, auth_rate_limit_per_minute=100,
         local_fsync=False, local_scrypt_n=1024,
+        cors_origins="https://cyber-life-wheat.vercel.app,http://localhost:8000",
     )
 
 

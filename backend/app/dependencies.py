@@ -31,12 +31,15 @@ async def current_principal(request: Request) -> Principal:
                         request.app.state.local_tokens)
     if request.app.state.settings.auth_mode == "firebase":
         identity = await request.app.state.firebase_auth.verify(token)
-        profile = await users.ensure_firebase_profile(identity)
+        await users.ensure_firebase_profile(identity)
+        profile = await users.public_profile(identity.uid)
     else:
         uid = request.app.state.local_tokens.verify(token)
-        profile = await users.get(uid)
-        if not profile or not profile.get("active", True):
+        stored_profile = await users.get(uid)
+        if not stored_profile or not stored_profile.get("active", True):
             raise AuthenticationError("الحساب غير متاح")
+        # Never expose password hashes or other private fields through /me.
+        profile = await users.public_profile(uid)
     role = await users.effective_role(profile["uid"])
     return Principal(uid=profile["uid"], profile=profile, role=role)
 

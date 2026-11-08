@@ -24,7 +24,11 @@ class UserService:
         if not profile:
             raise NotFoundError("الحساب غير موجود")
         role = await self.effective_role(uid)
-        return {k: v for k, v in profile.items() if k not in {"password_hash", "private_notes"}} | {"role": role}
+        public_fields = {
+            "uid", "email", "display_name", "school", "governorate", "active",
+            "email_verified", "created_at", "updated_at", "last_login_at", "team_id",
+        }
+        return {key: value for key, value in profile.items() if key in public_fields} | {"role": role}
 
     async def ensure_firebase_profile(self, identity) -> dict:
         path = f"users/{safe_key(identity.uid)}"

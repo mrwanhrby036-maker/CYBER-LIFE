@@ -1,5 +1,5 @@
-// عنوان الخدمة الخلفية.
-// اتركه فارغاً عندما تكون الواجهة والخدمة على نفس النطاق.
-// عند نشر الواجهة منفصلة، ضع عنوان الخدمة هنا (HTTPS فقط).
-// مثال: window.CYBERLIFE_API_BASE = 'https://api.example.com';
+// Public runtime configuration for the static Vercel frontend.
+// Set this to the real HTTPS base URL of the separately hosted FastAPI service.
+// Empty means same-origin API (useful when FastAPI itself serves the frontend).
+// Never place Firebase service-account credentials or other secrets here.
 window.CYBERLIFE_API_BASE = window.CYBERLIFE_API_BASE || '';

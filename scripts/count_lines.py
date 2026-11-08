@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXTS = {".py", ".js", ".html", ".css", ".json", ".md", ".svg", ".sh", ".rules", ".example", ".txt", ".yml", ".yaml"}
+EXTS = {".py", ".js", ".html", ".css", ".json", ".md", ".svg", ".rules", ".example", ".txt", ".yml", ".yaml"}
 SKIP_DIRS = {"node_modules", ".data", "__pycache__", ".pytest_cache", ".git", ".venv", "dist", "build", ".vercel"}
 SKIP_FILES = {"package-lock.json"}
 

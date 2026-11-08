@@ -3,7 +3,7 @@
 ## التشغيل
 
 ```bash
-./scripts/run_tests.sh
+python scripts/run_tests.py
 ```
 
 أو يدويًا:
@@ -11,8 +11,10 @@
 ```bash
 cd backend && python -m pytest tests -q
 cd tests-frontend && npm install && npm test
-python scripts/count_lines.py
+cd .. && python scripts/count_lines.py
 ```
+
+اختبارات الجلسة في `tests-frontend/auth-session.test.js` تغطي استعادة ID token وملف `/api/auth/me` دون مطالبة المستخدم بتسجيل دخول متكرر، بما في ذلك بقاء الجلسة عند انقطاع Backend.
 
 ## التغطية الحالية
 
