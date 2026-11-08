@@ -19,16 +19,16 @@
 
 ## الاختبارات
 
-- Backend: 52 اختبارًا ناجحًا.
+- Backend: 54 اختبارًا ناجحًا.
 - Frontend: 20 اختبارًا ناجحًا.
 - صياغة JavaScript وPython compileall: ناجحة.
-- المجموع: 72 اختبارًا ناجحًا، 0 فاشلة.
+- المجموع: 74 اختبارًا ناجحًا، 0 فاشلة.
 - التفاصيل: `docs/TEST_REPORT.md`.
 
 ## ما لم يكتمل قبل الإنتاج
 
-- إعداد Vercel static الحالي لا يحتوي عنوان Backend. يجب اختيار مضيف ASGI/Docker ثم وضع عنوان HTTPS الحقيقي في `frontend/config.js`.
-- إعداد secrets في استضافة Backend: service account، `CYBERLIFE_*` وCORS origin الدقيق.
+- أُضيف Vercel Python Runtime entrypoint لتشغيل FastAPI على نفس النطاق مع الواجهة؛ يلزم نشر Preview والتحقق من توجيه المسارات الفعلي.
+- إعدادات Vercel الحالية لا تحتوي `CYBERLIFE_FIREBASE_CREDENTIALS_JSON` أو `CYBERLIFE_FIREBASE_CREDENTIALS_FILE`. أضف Service Account إلى Preview secrets قبل اختبار الوصول إلى RTDB؛ لا يوجد اعتماد وهمي في المستودع.
 - التحقق الحي من Google provider، Authorized domains، نشر قواعد RTDB واتصال قاعدة البيانات.
 - اختبار Google OAuth وFirebase ID Token وRealtime Database end-to-end على نطاقات الإنتاج.
 

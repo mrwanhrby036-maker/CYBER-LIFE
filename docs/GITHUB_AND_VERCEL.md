@@ -1,29 +1,24 @@
-# GitHub وVercel — وضع التكامل
+# GitHub وVercel — إعداد CYBER LIFE
 
 ## GitHub
 
-المستودع هو `mrwanhrby036-maker/CYBER-LIFE`. للتعامل من نسخة محلية، استخدم فرع عمل ولا ترفع مباشرة إلى `main`. أداة الرفع المتاحة ترفض الفرع الافتراضي وتدفع الفرع الحالي فقط:
+المستودع هو `mrwanhrby036-maker/CYBER-LIFE`. التغييرات في فرع عمل مستقل، ولا تُدفع مباشرة إلى `main`. أداة الرفع (إن استخدمت محليًا) ترفض `main/master`:
 
 ```bash
 python scripts/push_to_github.py
 ```
 
-لا تغير الأداة عنوان `origin` إذا كان مضبوطًا، ولا تعيد تسمية الفرع. افحص التغييرات والاختبارات قبل الرفع أو فتح Pull Request.
-
 ## Vercel
 
-إعداد `vercel.json` الحالي ينشر `frontend/` كموقع ثابت، بلا Build Command وبلا Python Function أو Rewrite إلى API. لذلك لا يشغّل Backend تلقائيًا. وجود مشروع Vercel أو نجاح نشر الملفات لا يعني أن مسارات `/api/*` متاحة.
+الواجهة على `https://cyber-life-wheat.vercel.app/`. أُضيف في هذا الفرع مدخل Vercel Python Runtime (`main.py`) لتشغيل تطبيق FastAPI الحالي، مع إبقاء `frontend/` هو مجلد إخراج الملفات الثابتة. مسارات `/api/*` تستخدم نفس النطاق؛ اترك `CYBERLIFE_API_BASE` فارغًا في `frontend/config.js`.
 
-الموقع المنشور المذكور في الإعداد الحالي هو `https://cyber-life-wheat.vercel.app/`. عند النشر، تحقق من إعدادات مشروع Vercel مباشرة؛ أسماء المشاريع والفروع وحماية Preview قد تتغير ولا تُستنتج من هذا المستودع.
+تم إعداد Vercel project مسبقًا بالوضع `production` ومصادقة/تخزين Firebase، وقيمة CORS تشمل أصل الموقع. لكن إعدادات Vercel التي فُحصت لا تحتوي بيانات Service Account اللازمة لـFirebase Admin/RTDB. لذلك لن تعمل نقاط الحساب والبيانات حتى يضيف مالك المشروع السر `CYBERLIFE_FIREBASE_CREDENTIALS_JSON` من Vercel Project Settings → Environment Variables. أضفه إلى **Preview** أولًا فقط؛ لا تضعه في Git ولا في المحادثة ولا في إعدادات الواجهة.
 
-## ربط API بعد إنشاء Backend فعلي
+## خطوات تحقق Preview
 
-1. استضف FastAPI على مضيف مستقل يدعم ASGI/Docker، واربط نطاق HTTPS حقيقي به. لا يوجد عنوان Backend فعلي مسجل في المستودع الآن.
-2. عيّن في `frontend/config.js` جذر عنوان Backend الحقيقي، من دون `/api`:
-   ```js
-   window.CYBERLIFE_API_BASE = 'https://<actual-backend-host>';
-   ```
-3. عيّن `CYBERLIFE_CORS_ORIGINS=https://cyber-life-wheat.vercel.app` في Backend (وأضف الأصول الإضافية المعروفة فقط).
-4. أعد نشر الواجهة، ثم تحقق أن `/api/health` و`/api/auth/me` يذهبان إلى Backend المحدد.
+1. أضف Service Account JSON كسِرّ في Preview Environment Variables.
+2. انشر Preview من فرع العمل لا من `main`.
+3. اختبر `/api/health`، وCORS/`/api/auth/me`، ثم Google Auth واستعادة الجلسة وRealtime Database.
+4. راجع النتائج قبل ترقية أي Deployment إلى Production.
 
-تفاصيل البيئة، Firebase وCORS في [DEPLOYMENT.md](DEPLOYMENT.md). لا يوجد عنوان افتراضي/تخمين، ولا تنشر إلى الإنتاج قبل مراجعة التغييرات واجتياز الاختبارات.
+تفاصيل متغيرات Vercel وFirebase في [DEPLOYMENT.md](DEPLOYMENT.md). لا تروّج هذا الفرع للإنتاج تلقائيًا.

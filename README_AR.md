@@ -8,14 +8,9 @@
 
 ## التشغيل الحقيقي
 
-الإنتاج يعتمد على Firebase Authentication و Firebase Realtime Database، وليس على بيانات محلية.
+الإنتاج يعتمد على Firebase Authentication وFirebase Realtime Database. إعداد Vercel في هذا الفرع يشغّل الواجهة الثابتة وFastAPI Python على النطاق نفسه؛ يلزم إضافة Firebase Service Account كسرّ في Vercel قبل أن تعمل البيانات.
 
-1. انسخ `backend/.env.example` إلى `backend/.env`.
-2. املأ إعدادات Firebase الحقيقية من مشروعك.
-3. ضع إعدادات تطبيق الويب العامة في `frontend/js/auth-firebase-config.js`.
-4. شغّل الخادم الخلفي وانشر الواجهة بشكل منفصل.
-
-راجع [دليل النشر](docs/DEPLOYMENT.md).
+راجع [دليل النشر](docs/DEPLOYMENT.md) لمعرفة متغير Vercel المطلوب واختبار Preview قبل Production.
 
 ## الاختبارات
 

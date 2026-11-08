@@ -6,11 +6,11 @@
 
 | المجموعة | النتيجة |
 |---|---:|
-| Backend pytest، بما فيها `/api/auth/me` وCORS والملف الآمن | 52 ناجحًا، 0 فاشل |
+| Backend pytest، بما فيها `/api/auth/me` وCORS، أمان الملف ومدخل Vercel ASGI | 54 ناجحًا، 0 فاشل |
 | Frontend node:test/jsdom، بما فيها حفظ/استعادة الجلسة وAPI routing | 20 ناجحًا، 0 فاشل |
 | فحص صياغة كل ملفات JavaScript في `frontend/` | ناجح |
 | `compileall` لمجلدي `backend` و`scripts` | ناجح |
-| إجمالي اختبارات pytest + node:test | **72 ناجحًا، 0 فاشل** |
+| إجمالي اختبارات pytest + node:test | **74 ناجحًا، 0 فاشل** |
 
 تحذيرات غير مانعة ظهرت من Starlette/httpx ومن إعداد scope افتراضي في pytest-asyncio.
 
@@ -27,4 +27,4 @@
 
 - لم يُنفذ تسجيل Google حيًّا أو متصفح end-to-end، ولم تُستخدم بيانات اعتماد Firebase أو حساب مستخدم حقيقي.
 - لم يُختبر Firebase ID Token حقيقي مع Backend منشور، ولم يُختبر اتصال RTDB حي أو Emulator. اختبارات `/api/auth/me` الحالية تستخدم موفر المصادقة المحلي المعزول.
-- لم يُنشر أي شيء إلى Firebase أو Vercel أو Backend. الإعداد الحالي لا يحتوي عنوان Backend فعلي؛ لذلك لا يمكن ادعاء نجاح دورة الإنتاج الكاملة قبل استضافته وربطه.
+- لم يُنشر هذا التغيير إلى Firebase أو Vercel. يوجد الآن Vercel ASGI entrypoint في الفرع، لكن لم يُختبر بعد على Deployment حقيقي، كما أن سر Service Account غير مضبوط في Vercel.

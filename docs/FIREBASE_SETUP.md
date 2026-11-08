@@ -29,6 +29,6 @@
 
 ## ما يلزم للموقع
 
-الإعداد الحالي على Vercel ملفات ثابتة ولا يوجد Backend منشور/عنوان API في المستودع. قبل اعتبار Firebase login مكتملًا يجب أيضًا استضافة FastAPI مستقلًا، وضع عنوان HTTPS الفعلي في `frontend/config.js`، وضبط `CYBERLIFE_CORS_ORIGINS` على أصل Vercel الدقيق. الخطوات في [DEPLOYMENT.md](DEPLOYMENT.md).
+هذا الفرع يضيف تشغيل FastAPI على Vercel إلى جانب الواجهة، فلا يلزم عنوان API منفصل. لإكمال التشغيل أضف Service Account JSON إلى متغير `CYBERLIFE_FIREBASE_CREDENTIALS_JSON` في Vercel Preview secrets، ثم اختبر Preview قبل Production. راجع [DEPLOYMENT.md](DEPLOYMENT.md).
 
 ملاحظات الفحص الحي السابقة في `FIREBASE_VERIFIED.md` تاريخية فقط وليست إثباتًا للحالة الحالية أو لاختبار OAuth end-to-end.

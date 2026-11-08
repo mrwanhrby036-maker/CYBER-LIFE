@@ -3,7 +3,7 @@ CYBER LIFE — دليل بدء سريع
 المستودع: https://github.com/mrwanhrby036-maker/CYBER-LIFE
 الموقع: https://cyber-life-wheat.vercel.app/
 
-المشروع يستخدم واجهة HTML/CSS/JavaScript وخادم Python FastAPI. نسخة Vercel ثابتة، ولا تستضيف API Python ضمن الإعداد الحالي.
+المشروع يستخدم واجهة HTML/CSS/JavaScript وخادم Python FastAPI. في هذا الفرع أُضيف إعداد Vercel لتشغيل الاثنين على النطاق نفسه. يلزم إضافة Service Account Firebase كسرّ في Vercel قبل أن يكتمل تشغيل الـAPI.
 
 تشغيل الاختبارات:
   python scripts/run_tests.py
@@ -12,14 +12,11 @@ CYBER LIFE — دليل بدء سريع
   python scripts/serve_preview.py
 ثم افتح http://localhost:8000. تحفظ بيانات المعاينة المستقلة في backend/.data/preview-credentials.json، وهي مستثناة من Git ولا تصلح للإنتاج.
 
-نشر الواجهة والخادم:
-1. استضف Backend FastAPI على مضيف ASGI/Docker مستقل مع HTTPS وأسرار Firebase ضمن مدير أسرار المضيف.
-2. اضبط عنوانه الحقيقي في frontend/config.js:
-   window.CYBERLIFE_API_BASE = 'https://<actual-backend-host>';
-   لا تستبدل القيمة بعنوان تخميني؛ لا يوجد مضيف Backend مسجل حاليًا.
-3. اضبط CORS في Backend على أصل Vercel الدقيق.
-4. تحقق من Google Authentication وAuthorized domains وقواعد RTDB في Firebase Console.
-5. راجع التغييرات والاختبارات قبل نشرها للإنتاج.
+نشر Vercel:
+1. إعداد هذا الفرع يشغّل FastAPI عبر Python Runtime ويُبقي الواجهة ملفات ثابتة؛ اترك API base فارغًا.
+2. أضف CYBERLIFE_FIREBASE_CREDENTIALS_JSON كسرّ في Vercel Preview Environment Variables، ولا ترسله في المحادثة أو Git.
+3. تحقق من Google Authentication وAuthorized domains وقواعد RTDB في Firebase Console.
+4. اختبر Preview وراجع النتائج قبل أي ترقية للإنتاج.
 
 لرفع فرع العمل الحالي إلى origin بعد فحص الملفات الحساسة:
   python scripts/push_to_github.py
