@@ -4,7 +4,7 @@
   "outputDirectory": "frontend",
   "functions": {
     "main.py": {
-      "includeFiles": ["backend/app/**/*.py", "content/**/*.json"],
+      "includeFiles": "{backend/app/**/*.py,content/**/*.json}",
       "maxDuration": 60
     }
   },

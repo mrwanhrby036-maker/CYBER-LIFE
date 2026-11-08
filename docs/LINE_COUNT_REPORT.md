@@ -3,8 +3,8 @@
 تم توليده آليًا بواسطة `scripts/count_lines.py`. لا يشمل `node_modules` أو البيانات المحلية أو ملفات القفل.
 
 - إجمالي الملفات المعدودة: **142**
-- إجمالي الأسطر: **22675**
-- أسطر برمجية/محتوى (غير فارغة وغير تعليقات): **21607**
+- إجمالي الأسطر: **22676**
+- أسطر برمجية/محتوى (غير فارغة وغير تعليقات): **21608**
 - أسطر فارغة: 915 — تعليقات/عناوين: 153
 
 ## حسب المجلد
@@ -13,7 +13,7 @@
 |---|---:|---:|---:|
 | `README_AR.md` | 1 | 53 | 29 |
 | `START_HERE_AR.txt` | 1 | 25 | 18 |
-| `backend` | 46 | 3592 | 3016 |
+| `backend` | 46 | 3593 | 3017 |
 | `content` | 19 | 14267 | 14267 |
 | `database` | 3 | 212 | 194 |
 | `docs` | 13 | 1942 | 1690 |
@@ -76,7 +76,7 @@
 | `backend/tests/test_laboratory_missions_reports.py` | 103 | 84 | 19 | 0 |
 | `backend/tests/test_scoring_rules_config.py` | 73 | 56 | 17 | 0 |
 | `backend/tests/test_teams_progress.py` | 67 | 53 | 14 | 0 |
-| `backend/tests/test_vercel_entrypoint.py` | 32 | 27 | 5 | 0 |
+| `backend/tests/test_vercel_entrypoint.py` | 33 | 28 | 5 | 0 |
 | `content/chapter-01.json` | 671 | 671 | 0 | 0 |
 | `content/chapter-02.json` | 650 | 650 | 0 | 0 |
 | `content/chapter-03.json` | 655 | 655 | 0 | 0 |

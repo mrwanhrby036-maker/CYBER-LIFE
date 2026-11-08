@@ -24,6 +24,7 @@ def test_vercel_config_keeps_static_frontend_and_includes_runtime_dependencies()
     assert config["outputDirectory"] == "frontend"
     assert "main.py" in config["functions"]
     included = config["functions"]["main.py"]["includeFiles"]
+    assert isinstance(included, str)
     assert "backend/app/**/*.py" in included
     assert "content/**/*.json" in included
     assert config["functions"]["main.py"]["maxDuration"] > 0

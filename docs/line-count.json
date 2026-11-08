@@ -1,7 +1,7 @@
 {
   "totals": {
-    "total": 22675,
-    "code": 21607,
+    "total": 22676,
+    "code": 21608,
     "blank": 915,
     "comment": 153
   },
@@ -18,8 +18,8 @@
     },
     "backend": {
       "files": 46,
-      "total": 3592,
-      "code": 3016
+      "total": 3593,
+      "code": 3017
     },
     "content": {
       "files": 19,
@@ -404,8 +404,8 @@
     },
     {
       "path": "backend/tests/test_vercel_entrypoint.py",
-      "total": 32,
-      "code": 27,
+      "total": 33,
+      "code": 28,
       "blank": 5,
       "comment": 0
     },
